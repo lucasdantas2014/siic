@@ -68,7 +68,4 @@ class ChaveController extends Controller
     public function indexDetalhes(Request $request){
         return view('admin.chaves.detalhechave');
     }
-    public function labsCategoria(Request $request){
-        return view('admin.chaves.chaves_categoria',['chaves' => Chave::where('categoria',$request->categoria)->get()]);
-    }
 }

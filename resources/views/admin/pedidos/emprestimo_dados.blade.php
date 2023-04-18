@@ -8,10 +8,12 @@
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    @livewireStyles
 
 
 </head>
 <body>
+
     <!-- CABEÇALHO -->
      <div class="container border"  id = "header" style = "width:998px;background-image:url(background.png);">
             <div class="row" style = "width:100%;">
@@ -26,7 +28,7 @@
         <div class="row align-items-center justify-content-center" style = "background-color:#dff0d8; width:998px;height:12vh;">
             <div class = "col">
                 <!-- LOGIN -->
-                <a  href="{{route('dashboard')}}" style = "background-color:#ffff;font-size:4vh;color:inherit;" class="btn btn-default border"> Início</a>
+                <a  href="{{route('admin_dashboard')}}" style = "background-color:#ffff;font-size:4vh;color:inherit;" class="btn btn-default border"> Início</a>
             </div>
             <div class = "col">
                 <!-- Logout -->
@@ -42,56 +44,14 @@
         <div class="container m-2 text-center">
 
             <h3 class="m-3" >Emprestimo</h3>
-            <form action="{{route('admin_registrar_emprestimo')}}" method="get" class = "d-flex flex-column align-items-center">
+            <form action="{{route('admin_registrar_emprestimo')}}" method="post" class = "d-flex flex-column align-items-center">
                 <!-- CHAVE -->
+                @csrf
 
                 <input type="hidden" name="siape" value="{{ $user_siape }}">
 
-                <div class="form-group d-flex flex-row">
-                    <select id = "categoria" name="categoria" class = "form-control-lg mr-4">
-                            <option value="#" selected>Selecione a categoria da chave</option>
-                            <option value="Sala de Aula">Sala de Aula</option>
-                            <option value="Mineração">Mineração</option>
-                            <option value="Física">Física</option>
-                            <option value="Matematica">Matemática</option>
-                            <option value="Linguagens e Códigos">Linguagens e Códigos</option>
-                            <option value="Biologia">Biologia</option>
-                            <option value="Humanas">Humanas</option>
-                            <option value="Ginásio">Ginásio</option>
-                            <option value="Petróleo e Gás">Petróleo e Gás</option>
-                            <option value="Informática">Informática</option>
-                            <option value="Quimíca">Química</option>
-                            <option value="Ambiente Administrativo">Ambiente Administrativo</option>
-                            <option value="Construção de Edifícios">Construção de Edifícios</option>
-                    </select>
-
-                    <select id = "laboratorios" name="nomechave" class = "form-control-lg">
-                        <option value="#" selected>Selecione a chave</option>
-                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-                        <scrip>
-                        $(document).ready(function(){
-                            $(document).on('change','#categoria',function(){
-                                var cat_id = $(this).val();
-                                var div = $(this).parent();
-                                var op = " ";
-                                console.log(cat_id);
-                                $.ajax({
-                                    type:"get",
-                                    url:"{!!URL::to('buscar-chaves-por-categoria')!!}",
-                                    data:{'categoria':cat_id},
-                                    success:function(data){
-                                       for(var i = 0;i<data.length;i++){
-                                            op+= '<option value = "'+ data[i].nomelab+'">'+ data[i].nomelab +'</option>';
-                                       }
-                                       div.find("#laboratorios").html(" ");
-                                        div.find("#laboratorios").append(op);
-                                    }
-
-                                })
-                            })
-                        })
-                    </scrip>
-                    </select>
+                <div class="flex flex-col justify-around h-full">
+                    @livewire('dropdowns')
                 </div>
 
                 <!-- CONTROLE AR -->
@@ -115,5 +75,7 @@
         </div>
 
     </div>
+    @livewireScripts
+
 </body>
 </html>

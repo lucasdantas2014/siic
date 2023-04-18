@@ -13,7 +13,7 @@
 </head>
 <body>
 
-    <div class="container border"  id = "header" style = "width:998px;background-image:url(background.png);">   
+    <div class="container border"  id = "header" style = "width:998px;background-image:url(background.png);">
         <div class="row" style = "width:100%;">
                 <div class = "col-2">
                     <img src="logo_campus.png" class = "p-3">
@@ -31,23 +31,23 @@
             </div>
             <div class="row justify-content-center align-items-center g-2">
                 <div class="col">
-                    <form method="POST" class = "d-flex justify-content-center align-items-center flex-column" action="{{ route('login.custom') }}">
+                    <form method="POST" class = "d-flex justify-content-center align-items-center flex-column" action="{{ route('login') }}">
                             @csrf
                                     <label for="siape"><h5>SIAPE</h5></label>
                                     <input type="text" width = "20rem" style = "width:20rem;" placeholder="Digite o seu número do SIAPE aqui" id="siape" class="form-control" name="siape" autofocus>
                                         @if ($errors->has('siape'))
                                             <span class="text-danger">{{ $errors->first('siape') }}</span>
-                                        @endif 
-                                    
+                                        @endif
+
                                     <label for="password" class = "mt-4"><H5>Senha</H5></label>
                                     <input type="password" style = "width:20rem;" placeholder="Digite a sua senha aqui:" id="password" class="form-control" name="password">
                                         @if ($errors->has('password'))
                                             <span class="text-danger">{{ $errors->first('password') }}</span>
                                         @endif
                                         @if(session()->has('alert'))
-                                           
+
                                                <p>{{ session()->get('alert') }}</p>
-                                        
+
                                         @endif
 
                                 <button type="submit" class="btn btn-success mt-4">Entrar</button>

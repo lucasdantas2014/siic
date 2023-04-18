@@ -106,7 +106,7 @@ class AuthController extends Controller
     {
         if(Auth::check()){
            if(Auth::user()->is_admin){
-                return view('admin.dashboardadmin',['user' =>Auth::user()]);
+                return view('admin.dashboard',['user' =>Auth::user()]);
            }
            else{
                 return view('usuario.indexusuario',['user' =>Auth::user()]);

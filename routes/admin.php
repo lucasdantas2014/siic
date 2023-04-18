@@ -42,16 +42,13 @@ Route::get('emprestimos', [PedidoController::class, 'index'])->name('admin_empre
 // Faz o login pré-pedido e retorna para uma página para completar o empréstimo caso o usuário tenha fornecido informações corretas
 Route::post('login-emprestimo', [PedidoController::class, 'loginEmprestimo'])->name('admin_login_emprestimo');
 // Registra as informações no banco
-Route::post('registrar-emprestimo', [PedidoController::class, 'salvarEmprestimo'])->name('admin_registrar_emprestimo');
+Route::post('registrar-emprestimo', [PedidoController::class, 'registrarEmprestimo'])->name('admin_registrar_emprestimo');
 
 
 // MONITORAMENTO DE CHAVES - ADMIN
 
 Route::get('chaves',[ChaveController::class,'index'])->name('admin_chaves');
-Route::get('storechave',[ChaveController::class,'store'])->name('storechave');
 Route::get('adicionarchave',[ChaveController::class,'indexAdicionar'])->name('adicionarchave');
-Route::get('detalhechave',[ChaveController::class,'indexDetalhes'])->name('detalhechave');
-Route::get('labscategoria',[ChaveController::class,'labsCategoria'])->name('labscategoria');
 
 Route::get('chaves/editar/{nome}',[ChaveController::class,'editarChavePage'])->name('admin_chaves_editar_page');
 Route::post('chaves/editar',[ChaveController::class,'editarChave'])->name('admin_chaves_editar');
@@ -73,8 +70,13 @@ Route::post('usuarios/editar',[UserController::class,'editarUsuario'])->name('ad
 Route::get('usuarios/remover/{siape}', [UserController::class, 'removerUsuario'])->name('admin_usuarios_remover');
 
 // MONITORAMENTO DE DEVOLUÇÕES
-Route::get('devolucao',[PedidoController::class,'devolucaoIndex'])->name('devolucao');
-Route::get('storedevolucao',[PedidoController::class,'storedevolucao'])->name('storedevolucao');
+Route::get('devolucao',[PedidoController::class,'devolucaoIndex'])->name('admin_devolucao');
+Route::post('registrar-devolucao',[PedidoController::class,'registrarDevolucao'])->name('admin_registrar_devolucao');
+
+
+
+
+
 
 // RELATÓRIOS DE PEDIDOS
 Route::get('verpedidos',[PedidoController::class,'pedidosIndex'])->name('verpedidos');
@@ -87,6 +89,10 @@ Route::get('respostaperiodo',[PedidoController::class,'respondePeriodo'])->name(
 
 Route::get('pedidoschave',[PedidoController::class,'pedidosChaveIndex'])->name('pedidoschave');
 Route::get('respostachave',[PedidoController::class,'respondeChave'])->name('respostachave');
+
+
+
+
 
 Route::get('buscar-chaves-por-categoria',[PedidoController::class,'buscarChavesPorCategoria'])->name('admin_buscar_chaves_por_categoria');
 // RELATÓRIO DE PROBLEMAS

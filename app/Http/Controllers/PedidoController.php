@@ -26,69 +26,88 @@ class PedidoController extends Controller
     }
     public function registrarEmprestimo(Request $request){
 
-        $chave = Chave::where('nomelab',$request->nomechave)->get()->first();
+        $chave = Chave::where('nome',$request->nomechave)->get()->first();
 
-        $validacao = $request->validate([
-            'categoria' => ['required',Rule::notIn(['#'])],
-            'nomechave' =>['bail','required',Rule::notIn(['#']),new ChaveExiste($chave),new ChaveAtiva($chave)],
-            'controle' => ['required'],
-            'material_extra'=> ['required']
-        ],[
-            'nomechave.required' => "Você precisa digitar o nome da chave!",
-            'controle.required' => "Você precisa digitar um controle!",
-            'material_extra.required' => "Você precisa digitar o material extra que será usado!",
-            'categoria.not_in' => 'Você precisa selecionar uma categoria!',
-            'nomechave.not_in' => 'Você precisa selecionar um laboratório!'
-        ]);
+//        $validacao = $request->validate([
+//            'categoria' => ['required',Rule::notIn(['#'])],
+//            'chave' =>['bail','required',Rule::notIn(['#']),new ChaveExiste($chave),new ChaveAtiva($chave)],
+//            'controle' => ['required'],
+//            'material_extra'=> ['required']
+//        ],[
+//            'nomechave.required' => "Você precisa digitar o nome da chave!",
+//            'controle.required' => "Você precisa digitar um controle!",
+//            'material_extra.required' => "Você precisa digitar o material extra que será usado!",
+//            'categoria.not_in' => 'Você precisa selecionar uma categoria!',
+//            'nomechave.not_in' => 'Você precisa selecionar um laboratório!'
+//        ]);
+
+
+        $useId = User::where('siape', $request->input('siape'))
+            ->first()
+            ->id;
+
+
         $dados = Pedido::create([
-            'user_id' => $user_id,
-            'chave_id' => $chave->id,
+            'user_id' => $useId,
+            'chave_id' => $request->chave,
             'controle' => $request->controle,
             'status' => true,
             'outros_materiais' => $request->material_extra,
             'observacoes' => "Indefinido"
         ]);
-        $chave->ativo = true;
+
+        $chave = Chave::find($request->chave);
+
+        $chave->disponivel = false;
         $chave->save();
         session()->flash('mensagem','Pedido feito com sucesso!');
         session()->flash('dados',$dados);
-       return redirect()->route('dashboard');
+       return redirect()->route('admin_dashboard');
     }
 
     public function devolucaoIndex(){
         return view('admin.devolucao.devolucao');
     }
 
-    public function storedevolucao(Request $request){
-        $chave = Chave::where('nomelab',$request->nomechave)->get()->first();
-        $validacao = $request->validate([
-            'categoria' => ['required',Rule::notIn(['#'])],
-            'nomechave' =>['bail','required',Rule::notIn(['#']),new ChaveInativa($chave),new ChaveExiste($chave)],
-        ],[
-            'nomechave.required' => "Você precisa digitar o nome da chave!",
-            'categoria.not_in' => 'Você precisa selecionar uma categoria!',
-            'nomechave.not_in' => 'Você precisa selecionar um laboratório!'
-        ]);
-        $pedido = Pedido::where('chave_id',$chave->id)
-        ->where('status',true)->first();
-        $validaUser = $request->validate([
-            'keyusuario' => ['required',new SiapeExiste($request->keyusuario,$pedido),'numeric','digits:7']
-        ],[
-            'keyusuario.required' => 'Você precisa digitar o SIAPE!',
-            'keyusuario.numeric' => 'O SIAPE só é composto por números!',
-            'keyusuario.digits' => 'O SIAPE só é composto por 7 dígitos!',
-        ]);
+    public function registrarDevolucao(Request $request){
+        $chave = Chave::find($request->chave);
+//        $validacao = $request->validate([
+//            'categoria' => ['required',Rule::notIn(['#'])],
+//            'nomechave' =>['bail','required',Rule::notIn(['#']),new ChaveInativa($chave),new ChaveExiste($chave)],
+//        ],[
+//            'nomechave.required' => "Você precisa digitar o nome da chave!",
+//            'categoria.not_in' => 'Você precisa selecionar uma categoria!',
+//            'nomechave.not_in' => 'Você precisa selecionar um laboratório!'
+//        ]);
+
+        $userId = User::where('siape', $request->siape)
+            ->first()
+            ->id;
+
+        $pedido = Pedido::where('chave_id',$request->chave)
+            ->where('user_id', $userId)
+            ->where('status',true)->first();
+
+//        $validaUser = $request->validate([
+//            'keyusuario' => ['required',new SiapeExiste($request->keyusuario,$pedido),'numeric','digits:7']
+//        ],[
+//            'keyusuario.required' => 'Você precisa digitar o SIAPE!',
+//            'keyusuario.numeric' => 'O SIAPE só é composto por números!',
+//            'keyusuario.digits' => 'O SIAPE só é composto por 7 dígitos!',
+//        ]);
+
         $pedido->status = false;
         if($request->problema == ""){
             $pedido->observacoes = "Nenhum";
         }else{
             $pedido->observacoes = $request->problema;
         }
-        $pedido->save();
-        Chave::where('nomelab',$request->nomechave)->update(['ativo' => false]);
 
+        $pedido->save();
+        $chave->disponivel = true;
+        $chave->save();
         session()->flash('mensagemDevolucao','Chave devolvida com sucesso!');
-        return redirect()->route('dashboard');
+        return redirect()->route('admin_dashboard');
     }
 
     public function pedidosIndex(){
