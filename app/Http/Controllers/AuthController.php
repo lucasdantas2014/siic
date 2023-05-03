@@ -43,6 +43,9 @@ class AuthController extends Controller
             if(Auth::user()->is_admin){
                 return redirect(route('admin_dashboard'));
             }
+            else if (Auth::user()->tipo == User::TIPO_TECNICO) {
+                return redirect(route('tecnico_dashboard'));
+            }
             else{
                 return redirect(route('dashboard'));
             }
@@ -108,8 +111,11 @@ class AuthController extends Controller
            if(Auth::user()->is_admin){
                 return view('admin.dashboard',['user' =>Auth::user()]);
            }
+           elseif (Auth::user()->tipo == User::TIPO_TECNICO) {
+               return view('tecnico.dashboard', ['user' => Auth::user()]);
+           }
            else{
-                return view('usuario.indexusuario',['user' =>Auth::user()]);
+                return view('usuario.dashboard',['user' =>Auth::user()]);
            }
         }
 

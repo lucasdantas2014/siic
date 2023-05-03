@@ -50,7 +50,7 @@ Route::get('trocarsenhastore',[AuthController::class,'trocarSenhaStore'])->middl
 // PÁGINA PÚBLICA
 Route::get("buscacategoria",[UserController::class,'buscaCategoria'])->name('buscacategoria');
 
-
-Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// Rotas padrão do laravel para autenticação
+//Auth::routes();

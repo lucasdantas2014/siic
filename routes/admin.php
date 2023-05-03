@@ -75,9 +75,6 @@ Route::post('registrar-devolucao',[PedidoController::class,'registrarDevolucao']
 
 
 
-
-
-
 // RELATÓRIOS DE PEDIDOS
 Route::get('verpedidos',[PedidoController::class,'pedidosIndex'])->name('verpedidos');
 
@@ -89,8 +86,6 @@ Route::get('respostaperiodo',[PedidoController::class,'respondePeriodo'])->name(
 
 Route::get('pedidoschave',[PedidoController::class,'pedidosChaveIndex'])->name('pedidoschave');
 Route::get('respostachave',[PedidoController::class,'respondeChave'])->name('respostachave');
-
-
 
 
 

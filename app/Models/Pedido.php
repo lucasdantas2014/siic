@@ -9,6 +9,14 @@ class Pedido extends Model
 {
     use HasFactory;
 
+    const STATUS_DEVOLVIDO = 0,
+        STATUS_PENDENTE = 1;
+
+    const TIPOS_STATUS = [
+        self::STATUS_DEVOLVIDO => 'devolvido',
+        self::STATUS_PENDENTE => 'pendente'
+    ];
+
     public function chave(){
         return $this->belongsTo(Chave::class);
     }

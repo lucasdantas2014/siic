@@ -198,5 +198,15 @@ class PedidoController extends Controller
         $pedido->save();
         return redirect('indexProblemas');
     }
+
+    public function reservasDoUsuario(string $siape) {
+        $user = User::where('siape',$siape)->first();
+
+        $pedidos = Pedido::where('user_id', $user->id)
+            ->with('chave')
+            ->get();
+
+        return view('tecnico.reservas', ['reservas' => $pedidos, 'user' => $user]);
+    }
 }
 

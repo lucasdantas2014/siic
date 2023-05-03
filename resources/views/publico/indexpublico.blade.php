@@ -8,12 +8,12 @@
     <link rel="stylesheet" href="/css/styles.css">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
 </head>
 <body>
     <!-- CABEÇALHO -->
-    <div class="container border"  id = "header" style = "width:998px;background-image:url(background.png);">   
+    <div class="container border"  id = "header" style = "width:998px;background-image:url(background.png);">
             <div class="row" style = "width:100%;">
                 <div class = "col-2">
                     <img src="logo_campus.png" class = "p-3">
@@ -26,7 +26,7 @@
         <div class="row align-items-center justify-content-center" style = "background-color:#dff0d8; width:998px;height:12vh;">
         <div class = "col">
                 <!-- LOGIN -->
-                <a  href="{{route('login')}}" style = "background-color:#ffff;font-size:4vh;color:inherit;" class="btn btn-default border"> <img style = "width:5vh;height:5vh"  class = "mr-3" src="user.png"> Login</a>
+                <a  href="{{route('login_page')}}" style = "background-color:#ffff;font-size:4vh;color:inherit;" class="btn btn-default border"> <img style = "width:5vh;height:5vh"  class = "mr-3" src="user.png"> Login</a>
             </div>
         </div>
     </div>

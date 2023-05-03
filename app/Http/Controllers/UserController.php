@@ -35,6 +35,7 @@ class UserController extends Controller
                 'telefone' => $data['telefone'],
                 'cargo' => $data['cargo'],
                 'setor' => $data['setor'],
+                'tipo' => $data['tipo']
         ]);
 
         return redirect()->route('admin_usuarios');

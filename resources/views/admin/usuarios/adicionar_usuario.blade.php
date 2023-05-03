@@ -46,6 +46,17 @@
                     <option value="outro">Outro</option>
                 </select>
             </div>
+
+            <div class="mb-3">
+                <label for="" class="form-label"><h5>Tipo Usuário:</h5></label>
+                <select class="form-select form-select-lg" name="tipo" id="">
+                    <option value = "#" selected>Selecione uma opção</option>
+                    @foreach(\App\Models\User::USERS_TIPOS as $key => $value)
+                        <option value="{{ $key }}">{{ $value }}</option>
+                    @endforeach
+                </select>
+            </div>
+
             @if($errors->any)
                 @foreach($errors->all() as $error)
                     <p>{{$error}}</p>

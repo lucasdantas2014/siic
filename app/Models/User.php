@@ -27,7 +27,18 @@ class User extends Authenticatable
         'telefone',
         'cargo',
         'setor',
-        'is_admin'
+        'is_admin',
+        'tipo'
+    ];
+
+    const TIPO_PROFESSOR = 0,
+        TIPO_ADMIN = 1,
+        TIPO_TECNICO = 2;
+
+    const USERS_TIPOS = [
+        self::TIPO_PROFESSOR => 'professor',
+        self::TIPO_ADMIN => 'admin',
+        self::TIPO_TECNICO => 'tecnico'
     ];
 
     /**

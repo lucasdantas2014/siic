@@ -10,72 +10,109 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
     @yield('custom-head')
 
 </head>
 <body>
 
+    <div id="main">
     <div id="header" class="row">
-        <div class="row">
-            <div class="col-md-3">
-                <img src="{{asset('admin/logo_campus.png')}}">
-            </div>
-            <div class = "col-md-3">
-                <h1 class = "mt-4">Sistema de chaves</h1>
-            </div>
-            <div class = "col-md-3">
-                <a href="{{route('logout')}}">Sair</a>
-            </div>
-
+        <div class="col-md-5">
+            <img src="{{asset('admin/logo_campus.png')}}">
+        </div>
+        <div class = "col-md-6">
+            <h1 class = "mt-4">Sistema de chaves</h1>
+        </div>
+        <div class = "col-md-1">
+            <a href="{{route('logout')}}">Sair</a>
         </div>
 
     </div>
 
-{{--    <div id="header" >--}}
-{{--        <div class="row">--}}
-{{--            <div>--}}
-{{--                <img src={{asset('admin/logo_campus.png')}}>--}}
-{{--            </div>--}}
-{{--        </div>--}}
 
-{{--        <div class="row align-items-center justify-content-center">--}}
+    <div id="navbar" class="row">
+        <div class = "col-md-3 navbar-item">
+            <!-- USUÁRIOS -->
+            <a  href="{{route('admin_usuarios')}}" style = "background-color:#ffff;font-size:4vh;color:inherit;" class="btn btn-default border">
+                <img src={{asset('admin/user.png')}}> Usuários
+            </a>
+        </div>
 
-{{--            <div class = "col">--}}
-{{--                <!-- USUÁRIOS -->--}}
-{{--                <a  href="{{route('admin_usuarios')}}" style = "background-color:#ffff;font-size:4vh;color:inherit;" class="btn btn-default border">--}}
-{{--                    <img src={{asset('admin/user.png')}}> Usuários--}}
-{{--                </a>--}}
-{{--            </div>--}}
-{{--            <div class = "col">--}}
-{{--                <a  href="{{route('admin_chaves')}}" style = "background-color:#ffff;font-size:4vh;color:inherit;" class="btn btn-default border">--}}
-{{--                    <img src={{asset('admin/chaves.png')}}> Chaves--}}
-{{--                </a>--}}
-{{--            </div>--}}
+        <div class = "col-md-2 navbar-item">
+            <a  href="{{route('admin_chaves')}}" style = "background-color:#ffff;font-size:4vh;color:inherit;" class="btn btn-default border">
+                <img src={{asset('admin/chaves.png')}}> Chaves
+            </a>
+        </div>
 
-{{--            <div class = "col">--}}
-{{--                <!-- EMPRÉSTIMO-->--}}
-{{--                <a  href="{{route('admin_emprestimos')}}" class="btn btn-default border"> <img src={{asset('admin/emprestimo.png')}}>Empréstimo</a>--}}
-{{--            </div>--}}
+        <div class = "col-md-2 navbar-item">
+            <!-- EMPRÉSTIMO-->
+            <a  href="{{route('admin_emprestimos')}}" class="btn btn-default border"> <img src={{asset('admin/emprestimo.png')}}>Empréstimo</a>
+        </div>
 
-{{--            <div class = "col">--}}
-{{--                <!-- DEVOLUÇÃO -->--}}
-{{--                <a  href="{{route('admin_devolucao')}}" style = "background-color:#ffff;font-size:4vh;color:inherit;" class="btn btn-default border"> <img src={{asset('admin/devolucao.png')}}>Devolução</a>--}}
-{{--            </div>--}}
+        <div class = "col-md-2 navbar-item">
+            <!-- DEVOLUÇÃO -->
+            <a  href="{{route('admin_devolucao')}}" style = "background-color:#ffff;font-size:4vh;color:inherit;" class="btn btn-default border"> <img src={{asset('admin/devolucao.png')}}>Devolução</a>
+        </div>
 
-{{--            <div class = "col">--}}
-{{--                <!-- RELATÓRIOS -->--}}
-{{--                <a  href="{{route('verpedidos')}}" style = "background-color:#ffff;font-size:4vh;color:inherit;" class="btn btn-default border"> <img style = "width:5vh;height:5vh"  class = "mr-3" src={{asset('admin/history.png')}}>Relatórios</a>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-
-{{--    </div>--}}
+        <div class = "col-md-3 navbar-item">
+            <!-- RELATÓRIOS -->
+            <a  href="{{route('verpedidos')}}" style = "background-color:#ffff;font-size:4vh;color:inherit;" class="btn btn-default border"> <img src={{asset('admin/history.png')}}>Relatórios</a>
+        </div>
+    </div>
 
 
     @yield('conteudo')
 
     @include('layouts.footer')
+
+    </div>
+
 </body>
 <style>
-    #header {}
+
+    #main {
+        width: 998px;
+        margin-right: auto;
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    #header {
+        width: 100%;
+        height: 175px;
+        background-image: url(background.png);
+        display: flex;
+        align-items: center;
+    }
+
+    #navbar {
+        width: 100%;
+        justify-content: center;
+    }
+
+    #navbar img {
+        height: 50px;
+    }
+
+    .navbar-item {
+        padding: 0;
+    }
+
+    .navbar-item a {
+
+    }
+
 </style>
 </html>
