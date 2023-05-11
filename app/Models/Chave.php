@@ -32,6 +32,11 @@ class Chave extends Model
         'nome',
         'categoria',
         'descricao',
-        'disponivel'
+        'disponivel',
+        'sala_id'
     ];
+
+    public function sala() {
+        return $this->hasOne(Sala::class, 'id', 'sala_id');
+    }
 }

@@ -5,20 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Pedido extends Model
+class Problema extends Model
 {
     use HasFactory;
 
-    const STATUS_DEVOLVIDO = 0,
-        STATUS_PENDENTE = 1;
+    protected $table = 'problemas';
+
+    const STATUS_PENDENTE = 0,
+        STATUS_RESOLVIDO = 1;
 
     const TIPOS_STATUS = [
-        self::STATUS_DEVOLVIDO => 'devolvido',
-        self::STATUS_PENDENTE => 'pendente'
+        self::STATUS_PENDENTE => 'pendente',
+        self::STATUS_RESOLVIDO => 'resolvido'
     ];
 
-    public function chave(){
-        return $this->belongsTo(Chave::class);
+    public function sala(){
+        return $this->belongsTo(Sala::class);
     }
 
     public function controle(){
@@ -31,13 +33,11 @@ class Pedido extends Model
 
     protected $fillable = [
         'user_id',
-        'chave_id',
-        'controle',
         'status',
-        'outros_materiais',
-        'data_inicio' ,
-        'data_fim' ,
-        'observacoes',
-        'devolvido_em'
+        'titulo',
+        'descricao',
+        'data_resolvido',
+        'sala_id',
+        'tecnico_id'
     ];
 }

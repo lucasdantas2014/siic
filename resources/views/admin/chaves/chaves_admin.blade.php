@@ -48,9 +48,9 @@
                 <thead>
                 <tr>
                     <th scope="col">Chave</th>
-                    <th scope="col">Categoria</th>
+                    <th scope="col">Sala</th>
                     <th scope="col">Descrição</th>
-                    <th scope = "col">Status</th>
+                    <th scope="col">Status</th>
                     <th scope="col">Opções</th>
                 </tr>
                 </thead>
@@ -58,7 +58,7 @@
                 @foreach($chaves as $chave)
                     <tr>
                         <td>{{$chave->nome}}</td>
-                        <td>{{$chave->categoria}}</td>
+                        <td>{{$chave->sala->nome}}</td>
                         <td>{{$chave->descricao}}</td>
                         <td>@if($chave->disponivel == true)
                                 <strong style = "color:green">Dispnível!</strong>

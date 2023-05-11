@@ -16,9 +16,14 @@ return new class extends Migration
         Schema::create('chaves', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
-            $table->string('categoria');
+            $table->foreignId('sala_id');
             $table->string('descricao');
             $table->boolean('disponivel')->default(1);
+
+            $table->foreign('sala_id')
+                ->references('id')
+                ->on('salas');
+
             $table->timestamps();
         });
     }

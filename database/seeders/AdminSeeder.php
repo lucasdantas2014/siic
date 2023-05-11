@@ -26,7 +26,7 @@ class AdminSeeder extends Seeder
             "cargo" => "Assistênte",
             "setor" => "Informática",
             "siape_verified_at" => null,
-            "first_login" => 1,
+            "tipo" => User::TIPO_ADMIN,
             "is_admin" => 1
         ]);
     }

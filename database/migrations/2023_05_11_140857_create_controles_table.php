@@ -13,8 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->softDeletes();
+        Schema::create('controles', function (Blueprint $table) {
+            $table->id();
+            $table->string('nome');
+            $table->string('descricao');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropSoftDeletes();
-        });
+        Schema::dropIfExists('controles');
     }
 };

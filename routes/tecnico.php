@@ -3,11 +3,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\UsuarioController;
 use App\Http\Middleware\Autenticador;
 use App\Http\Controllers\PedidoController;
-use App\Http\Controllers\ChaveController;
-use App\Http\Controllers\TecnicoController;
+use App\Http\Controllers\ProblemaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,5 +23,11 @@ use App\Http\Controllers\TecnicoController;
 
 Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('tecnico_dashboard');
 
-Route::get('/reservas/{siape}', [PedidoController::class, 'reservasDoUsuario'])
+Route::get('/reservas', [PedidoController::class, 'reservasDoUsuario'])
     ->name('tecnico_reservas');
+
+Route::get('/problemas', [ProblemaController::class, 'show'])
+    ->name('tecnico_problemas');
+
+Route::get('/problemas/{problema}', [ProblemaController::class, 'resolverProblema'])
+    ->name('tecnico_problema_resolver');

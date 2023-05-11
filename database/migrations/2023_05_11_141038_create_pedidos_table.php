@@ -18,9 +18,18 @@ return new class extends Migration
             $table->boolean('status');
             $table->foreignId('user_id');
             $table->foreignId('chave_id');
-            $table->string('outros_materiais');
-            $table->string('observacoes');
-            $table->string('controle');
+            $table->string('outros_materiais')->nullable();
+            $table->string('observacoes')->nullable();
+            $table->dateTime('devolvido_em')->nullable();
+
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users');
+
+            $table->foreign('chave_id')
+                ->references('id')
+                ->on('chaves');
+
             $table->timestamps();
         });
     }

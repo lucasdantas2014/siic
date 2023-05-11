@@ -46,9 +46,14 @@
             <form action="{{route('admin_registrar_devolucao')}}" class = "d-flex align-items-center flex-column" method="post">
                 @csrf
 
-                <div class="flex flex-col justify-around h-full">
-                    @livewire('dropdowns')
-                </div>
+                <label class = "mt-4 "><h5>Chave</h5></label>
+                <select name="chave" id = "sala" class = "form-control-lg">
+                    @foreach($chaves as $chave)
+                        <option value="{{ $chave->id }}">
+                            {{ $chave->nome }} - {{ $chave->sala->nome }}
+                        </option>
+                    @endforeach
+                </select>
 
                 <label for="chave" class="form-label mt-3"><h5>Digite o SIAPE da pessoa que devolveu essa chave:</h5></label>
                 <input type="text" name="siape" id="siape" class="form-control" style = "width:20rem;">

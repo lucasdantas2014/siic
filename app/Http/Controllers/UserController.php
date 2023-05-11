@@ -30,7 +30,6 @@ class UserController extends Controller
             [
                 'nome' => $data['nome'],
                 'password' => Hash::make($data['password']),
-                'first_login' => false,
                 'email' => $data['email'],
                 'telefone' => $data['telefone'],
                 'cargo' => $data['cargo'],
@@ -80,18 +79,10 @@ class UserController extends Controller
         return view('publico.indexpublico',['pedidos' => Pedido::whereBetween('created_at', [today()->format('d-m-Y'),today()->addDay()])->where('status',true)->get()]);
     }
 
-    public function buscaCategoria(Request $request){
-
-        $laboratorios_categoria = [];
-
-        foreach (Chave::where('categoria',$request->categoria)->get() as $chave) {
-            array_push($laboratorios_categoria,$chave->id);
-        }
-        return view('publico.busca_categoria',['categoria' => $request->categoria,'pedidos' => Pedido::where('status',true)->whereIn('chave_id',$laboratorios_categoria)->get()]);
-    }
     public function trocarSenhaUsuario(){
         return view('admin.usuarios.trocarsenhausuario');
     }
+
     public function storeTrocaSenha(Request $request){
 
         $request->validate([

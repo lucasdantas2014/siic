@@ -23,16 +23,17 @@ return new class extends Migration
             $table->string('telefone');
             $table->string('cargo');
             $table->string('setor');
+            $table->unsignedInteger('tipo')->default(0);
 
             $table->timestamp('siape_verified_at')
                 ->nullable();
-            $table->boolean('first_login')
-                ->default(1);
             $table->boolean('is_admin')
                 ->default(0);
 
             $table->rememberToken();
             $table->timestamps();
+
+            $table->softDeletes();
         });
     }
 

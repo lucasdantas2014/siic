@@ -34,8 +34,9 @@ class AuthController extends Controller
 
         $credentials = $request->only('siape', 'password');
         if (Auth::attempt($credentials)) {
-//            dd(Auth::user());
             Auth::guard()->attempt($credentials);
+            $request->session()->regenerate();
+
             if(Auth::user()->first_login == 1){
                 return redirect('/firstlogin');
             }
@@ -44,11 +45,9 @@ class AuthController extends Controller
                 return redirect(route('admin_dashboard'));
             }
             else if (Auth::user()->tipo == User::TIPO_TECNICO) {
-                return redirect(route('tecnico_dashboard'));
+                return redirect()->intended(route('tecnico_dashboard'));
             }
-            else{
-                return redirect(route('dashboard'));
-            }
+
         }
 
         return redirect('login')->with('alert','Senha ou SIAPE inválido!');
@@ -96,7 +95,6 @@ class AuthController extends Controller
         'nome' => $data['nome'],
         'siape' => $data['siape'],
         'password' => Hash::make($data['password']),
-        'first_login' => false,
         'email' => $data['email'],
         'telefonecelular' => $data['telefonecelular'],
         'cargo' => $data['cargo'],
@@ -115,7 +113,7 @@ class AuthController extends Controller
                return view('tecnico.dashboard', ['user' => Auth::user()]);
            }
            else{
-                return view('usuario.dashboard',['user' =>Auth::user()]);
+//                return view('usuario.dashboard',['user' =>Auth::user()]);
            }
         }
 

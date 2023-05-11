@@ -39,7 +39,6 @@ Route::get('logout',[AuthController::class,'signOut'])->name('logout')->middlewa
 // Retorna dashboard geral - USUARIO COMUM ou ADMIN
 Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
 
-Route::get('usuariopedidos',[UsuarioController::class,'index'])->middleware('App\Http\Middleware\Authenticate')->name('usuariopedidos');
 
 // PÁGINA DE USUÁRIO COMUM
 
@@ -51,6 +50,3 @@ Route::get('trocarsenhastore',[AuthController::class,'trocarSenhaStore'])->middl
 Route::get("buscacategoria",[UserController::class,'buscaCategoria'])->name('buscacategoria');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-// Rotas padrão do laravel para autenticação
-//Auth::routes();

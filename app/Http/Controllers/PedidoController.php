@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Models\Pedido;
+use App\Models\Problema;
+use App\Models\Sala;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Chave;
@@ -26,8 +28,6 @@ class PedidoController extends Controller
     }
     public function registrarEmprestimo(Request $request){
 
-        $chave = Chave::where('nome',$request->nomechave)->get()->first();
-
 //        $validacao = $request->validate([
 //            'categoria' => ['required',Rule::notIn(['#'])],
 //            'chave' =>['bail','required',Rule::notIn(['#']),new ChaveExiste($chave),new ChaveAtiva($chave)],
@@ -46,14 +46,14 @@ class PedidoController extends Controller
             ->first()
             ->id;
 
-
         $dados = Pedido::create([
             'user_id' => $useId,
             'chave_id' => $request->chave,
-            'controle' => $request->controle,
-            'status' => true,
+//            'controle' => $request->controle,
+            'status' => Pedido::STATUS_PENDENTE,
             'outros_materiais' => $request->material_extra,
-            'observacoes' => "Indefinido"
+            'devolvido_em' => null,
+            'observacoes' => ""
         ]);
 
         $chave = Chave::find($request->chave);
@@ -66,7 +66,10 @@ class PedidoController extends Controller
     }
 
     public function devolucaoIndex(){
-        return view('admin.devolucao.devolucao');
+
+        $chaves = Chave::where('disponivel', false)->get();
+
+        return view('admin.devolucao.devolucao', ['chaves' => $chaves]);
     }
 
     public function registrarDevolucao(Request $request){
@@ -86,7 +89,7 @@ class PedidoController extends Controller
 
         $pedido = Pedido::where('chave_id',$request->chave)
             ->where('user_id', $userId)
-            ->where('status',true)->first();
+            ->where('status', Pedido::STATUS_PENDENTE)->first();
 
 //        $validaUser = $request->validate([
 //            'keyusuario' => ['required',new SiapeExiste($request->keyusuario,$pedido),'numeric','digits:7']
@@ -101,6 +104,15 @@ class PedidoController extends Controller
             $pedido->observacoes = "Nenhum";
         }else{
             $pedido->observacoes = $request->problema;
+            $problema = new Problema();
+//            dd($pedido->chave->nome);
+            $problema->firstOrCreate([
+                'titulo' => 'Problema - reserva: ' . $pedido->chave->nome,
+                'descricao' => $pedido->observacoes,
+                'status' => Problema::STATUS_PENDENTE,
+                'user_id' => $userId,
+                'sala_id' => 1,
+            ]);
         }
 
         $pedido->save();
@@ -166,6 +178,7 @@ class PedidoController extends Controller
     public function loginEmprestimo(Request $request){
 
         $user = User::where('siape',$request->input('siape'))->first();
+
         $validacao = $request->validate([
             'siape' => ['bail','required','digits:7','numeric', new SiapeCorreto($user)],
             'senha' => ['required',new LoginCorreto($user)]
@@ -175,13 +188,16 @@ class PedidoController extends Controller
             'siape.numeric' => 'O SIAPE só pode ser composto por números!',
             'senha.required' => 'Você precisa prencher o campo de senha!'
         ]);
-        return view('admin.pedidos.emprestimo_dados',['user_siape' => $user->siape]);
+
+        $chaves = Chave::where('disponivel', true)->get();
+
+        return view('admin.pedidos.emprestimo_dados',['user_siape' => $user->siape, 'chaves' => $chaves]);
     }
     public function pedidosUsuarioComum(Request $request){
         return view('usuario.pedidos_usuario',['pedidos' => Pedido::where('user_id',Auth::user()->id)->get()]);
     }
     public function buscarChavesPorCategoria(Request $request){
-        dd($request->input('categoria'));
+
         $data = Chave::where('categoria' , $request->categoria)
             ->where('disponivel', true)
             ->get();
@@ -199,14 +215,13 @@ class PedidoController extends Controller
         return redirect('indexProblemas');
     }
 
-    public function reservasDoUsuario(string $siape) {
-        $user = User::where('siape',$siape)->first();
+    public function reservasDoUsuario() {
 
-        $pedidos = Pedido::where('user_id', $user->id)
+        $pedidos = Pedido::where('user_id', Auth::id())
             ->with('chave')
             ->get();
 
-        return view('tecnico.reservas', ['reservas' => $pedidos, 'user' => $user]);
+        return view('tecnico.reservas', ['reservas' => $pedidos]);
     }
 }
 

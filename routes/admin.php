@@ -32,9 +32,9 @@ Route::get('registration', [AuthController::class, 'registration'])->middleware(
 
 Route::get('/firstlogin',[AuthController::class,'firstloginIndex'])->middleware('App\Http\Middleware\Authenticate');
 
-Route::get('logout',[AuthController::class,'signOut'])->name('logout')->middleware('App\Http\Middleware\Authenticate');
+//Route::get('logout',[AuthController::class,'signOut'])->name('logout')->middleware('App\Http\Middleware\Authenticate');
 
-Route::get('usuariopedidos',[UsuarioController::class,'index'])->middleware('App\Http\Middleware\Authenticate')->name('usuariopedidos');
+//Route::get('usuariopedidos',[UsuarioController::class,'index'])->middleware('App\Http\Middleware\Authenticate')->name('usuariopedidos');
 
 
 // Retorna página de login pré-empréstimo
@@ -48,8 +48,10 @@ Route::post('registrar-emprestimo', [PedidoController::class, 'registrarEmpresti
 // MONITORAMENTO DE CHAVES - ADMIN
 
 Route::get('chaves',[ChaveController::class,'index'])->name('admin_chaves');
-Route::get('adicionarchave',[ChaveController::class,'indexAdicionar'])->name('adicionarchave');
+Route::get('adicionarchave',[ChaveController::class,'adicionarPage'])->name('adicionarchave');
 
+
+Route::post('chaves/cadastrar', [ChaveController::class, 'store'])->name('admin_chaves_cadastrar');
 Route::get('chaves/editar/{nome}',[ChaveController::class,'editarChavePage'])->name('admin_chaves_editar_page');
 Route::post('chaves/editar',[ChaveController::class,'editarChave'])->name('admin_chaves_editar');
 Route::get('chaves/alterar-status/{nome}',[ChaveController::class,'alterarStatus'])->name('admin_chaves_alterar_status');

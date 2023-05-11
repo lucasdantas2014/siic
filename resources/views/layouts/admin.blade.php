@@ -61,7 +61,7 @@
 
         <div class = "col-md-2 navbar-item">
             <!-- DEVOLUÇÃO -->
-            <a  href="{{route('admin_devolucao')}}" style = "background-color:#ffff;font-size:4vh;color:inherit;" class="btn btn-default border"> <img src={{asset('admin/devolucao.png')}}>Devolução</a>
+            <a  href="{{route('admin_devolucao')}}" style = "background-color:#ffff;font-size:4vh;color:inherit;" class="btn btn-default border"> <img src={{asset('images/devolucao.png')}}>Devolução</a>
         </div>
 
         <div class = "col-md-3 navbar-item">
