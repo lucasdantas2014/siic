@@ -12,9 +12,7 @@
     <link href="{{ asset('tecnico/css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="/css/styles.css">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-
+    @vite(['resources/js/app.js'])
 </head>
 
 <body>
@@ -43,11 +41,6 @@
             <!-- PROBLEMAS -->
             <a  href="{{ route('tecnico_problemas')}}" style = "background-color:#ffff;font-size:4vh;color:inherit;" class="btn btn-default border"> <img style = "width:5vh;height:5vh"  class = "mr-3" src="{{asset('tecnico/devolucao.png')}}">Problemas</a>
         </div>
-
-{{--        <div class = "col">--}}
-{{--            <!-- PROBLEMAS -->--}}
-{{--            <a  href="{{ route('tecnico_problemas')}}" style = "background-color:#ffff;font-size:4vh;color:inherit;" class="btn btn-default border"> <img style = "width:5vh;height:5vh"  class = "mr-3" src="{{asset('tecnico/devolucao.png')}}">Laboratórios atendidos</a>--}}
-{{--        </div>--}}
 
         <div class = "col">
             <!-- RELATÓRIOS -->
