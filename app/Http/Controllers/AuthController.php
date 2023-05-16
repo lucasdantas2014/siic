@@ -47,6 +47,9 @@ class AuthController extends Controller
             else if (Auth::user()->tipo == User::TIPO_TECNICO) {
                 return redirect()->intended(route('tecnico_dashboard'));
             }
+            else{
+                return redirect(route('dashboard'));
+            }
 
         }
 
@@ -113,7 +116,7 @@ class AuthController extends Controller
                return view('tecnico.dashboard', ['user' => Auth::user()]);
            }
            else{
-//                return view('usuario.dashboard',['user' =>Auth::user()]);
+                 return view('professor.dashboard',['user' =>Auth::user()]);
            }
         }
 

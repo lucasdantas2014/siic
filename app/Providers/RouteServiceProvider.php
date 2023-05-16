@@ -43,6 +43,10 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('web')
                 ->prefix('tecnico')
                 ->group(base_path('routes/tecnico.php'));
+
+            Route::middleware('web')
+                ->prefix('professor')
+                ->group(base_path('routes/professor.php'));
         });
     }
 

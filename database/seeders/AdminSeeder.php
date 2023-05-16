@@ -18,16 +18,16 @@ class AdminSeeder extends Seeder
     public function run()
     {
         User::firstOrCreate([
-            "nome" => "Admin",
-            "siape" => "7654321",
-            "password" =>  Hash::make('12345678'),
-            "email" => "admin@email.com",
-            "telefone" => "988518481",
-            "cargo" => "Assistênte",
-            "setor" => "Informática",
+            "nome" => "Professor",
+            "siape" => "0409200",
+            "password" =>  Hash::make('63524100'),
+            "email" => "prof@email.com",
+            "telefone" => "996886604",
+            "cargo" => "Professor",
+            "setor" => "Eng",
             "siape_verified_at" => null,
-            "tipo" => User::TIPO_ADMIN,
-            "is_admin" => 1
+            "tipo" => User::TIPO_PROFESSOR,
+            "is_admin" => 0
         ]);
     }
 }

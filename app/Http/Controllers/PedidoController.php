@@ -194,7 +194,7 @@ class PedidoController extends Controller
         return view('admin.pedidos.emprestimo_dados',['user_siape' => $user->siape, 'chaves' => $chaves]);
     }
     public function pedidosUsuarioComum(Request $request){
-        return view('usuario.pedidos_usuario',['pedidos' => Pedido::where('user_id',Auth::user()->id)->get()]);
+        return view('professor.pedidos_usuario',['pedidos' => Pedido::where('user_id',Auth::user()->id)->get()]);
     }
     public function buscarChavesPorCategoria(Request $request){
 
@@ -222,6 +222,10 @@ class PedidoController extends Controller
             ->get();
 
         return view('tecnico.reservas', ['reservas' => $pedidos]);
+    }
+
+    public function relatorioDoUsuario(){
+
     }
 }
 
