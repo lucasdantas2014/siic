@@ -31,3 +31,9 @@ Route::get('/problemas', [ProblemaController::class, 'show'])
 
 Route::get('/problemas/{problema}', [ProblemaController::class, 'resolverProblema'])
     ->name('tecnico_problema_resolver');
+
+Route::get('/relatorios', [PedidoController::class, 'relatorio'])
+    ->name('tecnico_relatorios');
+
+Route::post('/relatorio/reservas', [PedidoController::class, 'gerarRelatorioPedidos'])
+    ->name('tecnico_relatorio_reserva');

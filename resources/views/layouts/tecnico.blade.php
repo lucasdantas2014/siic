@@ -44,7 +44,7 @@
 
         <div class = "col">
             <!-- RELATÓRIOS -->
-            <a  href="" style = "background-color:#ffff;font-size:4vh;color:inherit;" class="btn btn-default border"> <img style = "width:5vh;height:5vh"  class = "mr-3" src="{{asset('tecnico/history.png')}}">Relatórios</a>
+            <a  href="{{ route('tecnico_relatorios') }}" style = "background-color:#ffff;font-size:4vh;color:inherit;" class="btn btn-default border"> <img style = "width:5vh;height:5vh"  class = "mr-3" src="{{asset('tecnico/history.png')}}">Relatórios</a>
         </div>
     </div>
 

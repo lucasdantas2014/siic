@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Models\Pedido;
 use App\Models\Problema;
 use App\Models\Sala;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Chave;
@@ -100,6 +102,8 @@ class PedidoController extends Controller
 //        ]);
 
         $pedido->status = false;
+        $pedido->devolvido_em = Carbon::now();
+
         if($request->problema == ""){
             $pedido->observacoes = "Nenhum";
         }else{
@@ -222,6 +226,86 @@ class PedidoController extends Controller
             ->get();
 
         return view('tecnico.reservas', ['reservas' => $pedidos]);
+    }
+
+    public function relatorio() {
+
+        $pedidosQuery = Pedido::where('user_id', Auth::id());
+
+
+
+//        dd($pedidosQuey);
+        $chaves = $pedidosQuery
+            ->select(['chave_id'])
+            ->groupBy('chave_id')
+            ->get()
+            ->toArray();
+//            ->toArray();
+
+        $chaves = collect($chaves)
+            ->map(function ($chave) {
+                return Chave::with('sala')
+                    ->find($chave['chave_id']);
+            });
+
+//        dd(($chaves));
+
+        return view('tecnico.relatorio', ['chaves' => $chaves]);
+    }
+
+    public function gerarRelatorioPedidos(Request $request) {
+
+
+        $dataInicioEmprestimo = $request->input('data-inicio-emprestimo');
+        $dataFimEmprestimo = $request->input('data-fim-emprestimo');
+        $dataInicioDevolucao = $request->input('data-inicio-devolucao');
+        $dataFimDevolucao = $request->input('data-fim-devolucao');
+
+        $chave = $request->input('chave');
+//        dd($dataInicioDevolucao);
+
+        $pedidosQuery = Pedido::where('user_id', Auth::id());
+
+        if (isset($dataInicioEmprestimo)) {
+            $pedidosQuery = $pedidosQuery
+                ->where('created_at', '>=', $dataInicioEmprestimo);
+        }
+
+        if (isset($dataFimEmprestimo)) {
+            $pedidosQuery = $pedidosQuery
+                ->where('created_at', '<=', Carbon::parse($dataFimEmprestimo)->addDay());
+        }
+
+        if (isset($dataInicioDevolucao)) {
+            $pedidosQuery = $pedidosQuery
+                ->where('devolvido_em', '>=', $dataInicioDevolucao);
+        }
+
+        if (isset($dataFimDevolucao)) {
+            $pedidosQuery = $pedidosQuery
+                ->where('devolvido_em', '<=', Carbon::parse($dataFimDevolucao)->addDay());
+        }
+
+        if (isset($chave) && $chave != '') {
+            $pedidosQuery = $pedidosQuery
+                ->where('chave_id', $chave);
+        }
+
+        $pedidos = $pedidosQuery
+            ->with('chave.sala')
+            ->get()
+            ->toArray();
+//        dd($pedidos);
+
+
+//        return view('tecnico.relatorio.reserva', ['pedidos' => $pedidos]);
+        view()->share('pedidos', $pedidos);
+
+        $pdf = Pdf::loadview('tecnico.relatorio.reserva', $pedidos);
+
+
+//        dd(Carbon::now()->toDate());
+        return $pdf->download('relatorio.pdf');
     }
 }
 
