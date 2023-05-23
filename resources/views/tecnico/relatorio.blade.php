@@ -1,4 +1,4 @@
-@extends('layouts.professor')
+@extends('layouts.tecnico')
 
 @section('conteudo')
 
