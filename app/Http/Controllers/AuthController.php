@@ -48,7 +48,7 @@ class AuthController extends Controller
                 return redirect()->intended(route('tecnico_dashboard'));
             }
             else{
-                return redirect(route('dashboard'));
+                return redirect(route('professor_dashboard'));
             }
 
         }

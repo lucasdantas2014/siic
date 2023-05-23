@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\PedidoController;
+use App\Http\Controllers\ProblemaController;
 use Illuminate\Support\Facades\Route;
 
 
