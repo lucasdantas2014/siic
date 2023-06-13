@@ -30,20 +30,6 @@ class PedidoController extends Controller
     }
     public function registrarEmprestimo(Request $request){
 
-//        $validacao = $request->validate([
-//            'categoria' => ['required',Rule::notIn(['#'])],
-//            'chave' =>['bail','required',Rule::notIn(['#']),new ChaveExiste($chave),new ChaveAtiva($chave)],
-//            'controle' => ['required'],
-//            'material_extra'=> ['required']
-//        ],[
-//            'nomechave.required' => "Você precisa digitar o nome da chave!",
-//            'controle.required' => "Você precisa digitar um controle!",
-//            'material_extra.required' => "Você precisa digitar o material extra que será usado!",
-//            'categoria.not_in' => 'Você precisa selecionar uma categoria!',
-//            'nomechave.not_in' => 'Você precisa selecionar um laboratório!'
-//        ]);
-
-
         $useId = User::where('siape', $request->input('siape'))
             ->first()
             ->id;
@@ -76,14 +62,6 @@ class PedidoController extends Controller
 
     public function registrarDevolucao(Request $request){
         $chave = Chave::find($request->chave);
-//        $validacao = $request->validate([
-//            'categoria' => ['required',Rule::notIn(['#'])],
-//            'nomechave' =>['bail','required',Rule::notIn(['#']),new ChaveInativa($chave),new ChaveExiste($chave)],
-//        ],[
-//            'nomechave.required' => "Você precisa digitar o nome da chave!",
-//            'categoria.not_in' => 'Você precisa selecionar uma categoria!',
-//            'nomechave.not_in' => 'Você precisa selecionar um laboratório!'
-//        ]);
 
         $userId = User::where('siape', $request->siape)
             ->first()
@@ -93,29 +71,24 @@ class PedidoController extends Controller
             ->where('user_id', $userId)
             ->where('status', Pedido::STATUS_PENDENTE)->first();
 
-//        $validaUser = $request->validate([
-//            'keyusuario' => ['required',new SiapeExiste($request->keyusuario,$pedido),'numeric','digits:7']
-//        ],[
-//            'keyusuario.required' => 'Você precisa digitar o SIAPE!',
-//            'keyusuario.numeric' => 'O SIAPE só é composto por números!',
-//            'keyusuario.digits' => 'O SIAPE só é composto por 7 dígitos!',
-//        ]);
-
         $pedido->status = false;
         $pedido->devolvido_em = Carbon::now();
+
+
+        // dd($request->input('sala'))
 
         if($request->problema == ""){
             $pedido->observacoes = "Nenhum";
         }else{
             $pedido->observacoes = $request->problema;
             $problema = new Problema();
-//            dd($pedido->chave->nome);
+
             $problema->firstOrCreate([
                 'titulo' => 'Problema - reserva: ' . $pedido->chave->nome,
                 'descricao' => $pedido->observacoes,
                 'status' => Problema::STATUS_PENDENTE,
                 'user_id' => $userId,
-                'sala_id' => 1,
+                'sala_id' => $pedido->chave->sala->id,
             ]);
         }
 
@@ -264,14 +237,25 @@ class PedidoController extends Controller
         $chave = $request->input('chave');
 //        dd($dataInicioDevolucao);
 
+        $user = Auth::user();
+
         $pedidosQuery = Pedido::where('user_id', Auth::id());
 
+        $mensagem = "";
+
         if (isset($dataInicioEmprestimo)) {
+            $mensagem = "Relatório de todas as reservas feitas por " . $user->nome . " (siape: " . $user->siape . ")" . " desde " . Carbon::parse($dataInicioEmprestimo)->format('d/m/Y');
             $pedidosQuery = $pedidosQuery
                 ->where('created_at', '>=', $dataInicioEmprestimo);
         }
 
         if (isset($dataFimEmprestimo)) {
+
+            if ($mensagem != "") {
+                $mensagem = $mensagem . ' até ' . Carbon::parse($dataFimEmprestimo)->format('d/m/Y');
+            } else {
+                $mensagem = "Relatório de todas as reservas feitas por " . $user->nome . " (siape: " . $user->siape . ") " . " até " . Carbon::parse($dataFimEmprestimo)->format('d/m/Y');
+            }
             $pedidosQuery = $pedidosQuery
                 ->where('created_at', '<=', Carbon::parse($dataFimEmprestimo)->addDay());
         }
@@ -291,20 +275,22 @@ class PedidoController extends Controller
                 ->where('chave_id', $chave);
         }
 
+        if ($mensagem == '') {
+            $mensagem = "Relatório de todas as reservas feitas por " . $user->nome . " (siape: " . $user->siape . ").";
+        }
+
         $pedidos = $pedidosQuery
             ->with('chave.sala')
             ->get()
             ->toArray();
-//        dd($pedidos);
 
 
 //        return view('tecnico.relatorio.reserva', ['pedidos' => $pedidos]);
         view()->share('pedidos', $pedidos);
+        view()->share('mensagem', $mensagem);
 
         $pdf = Pdf::loadview('tecnico.relatorio.reserva', $pedidos);
 
-
-//        dd(Carbon::now()->toDate());
         return $pdf->download('relatorio.pdf');
     }
 }

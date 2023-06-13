@@ -76,7 +76,10 @@ class UserController extends Controller
 
 
     public function homePage(Request $request){
-        return view('publico.indexpublico',['pedidos' => Pedido::whereBetween('created_at', [today()->format('d-m-Y'),today()->addDay()])->where('status',true)->get()]);
+
+        $pedidos = Pedido::where('status', Pedido::STATUS_PENDENTE)
+            ->get();
+        return view('publico.index_publico',['pedidos' => $pedidos]);
     }
 
     public function trocarSenhaUsuario(){

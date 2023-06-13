@@ -1,45 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Devolução - Sistema de chaves</title>
-    <link rel="stylesheet" href="/css/styles.css">
+@extends('layouts.admin')
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    @livewireStyles
+@section('conteudo')
 
-</head>
-<body>
-    <!-- CABEÇALHO -->
-    <div class="container border"  id = "header" style = "width:998px;background-image:url(background.png);">
-            <div class="row" style = "width:100%;">
-                <div class = "col-2">
-                    <img src="logo_campus.png" class = "p-3">
-                </div>
-                <div class = "col-3 offset-5">
-                    <h1 class = "mt-4">Sistema de chaves</h1>
-                </div>
-            </div>
-        <!-- LISTA DE OPÇÕES -->
-        <div class="row align-items-center justify-content-center" style = "background-color:#dff0d8; width:998px;height:12vh;">
-            <div class = "col">
-                <!-- LOGIN -->
-                <a  href="{{route('dashboard')}}" style = "background-color:#ffff;font-size:4vh;color:inherit;" class="btn btn-default border"> Início</a>
-            </div>
-            <div class = "col">
-                <!-- Logout -->
-                <a  href="{{route('logout')}}" style = "background-color:#ffff;font-size:4vh;color:inherit;" class="btn btn-default border"> Sair</a>
-            </div>
-        </div>
-    </div>
-    <!-- CORPO -->
     <div class="row justify-content-center align-items-center g-2">
         <div class="col-12 m-2 text-center">
 
-            <h3 class="m-3" >Devolução</h3>
+            <h3 class="m-3 mt-4" >Devolução</h3>
             <!-- CORPO -->
             <div class="container" style = "width:998px">
             <!-- FORMULÁRIO DE DEVOLUÇÃO -->
@@ -48,6 +14,11 @@
 
                 <label class = "mt-4 "><h5>Chave</h5></label>
                 <select name="chave" id = "sala" class = "form-control-lg">
+                    @if (count($chaves) == 0)
+                        <option value="">
+                            Nenhuma chave está reservada
+                        </option>
+                    @endif
                     @foreach($chaves as $chave)
                         <option value="{{ $chave->id }}">
                             {{ $chave->nome }} - {{ $chave->sala->nome }}
@@ -73,5 +44,5 @@
         </div>
     </div>
     @livewireScripts
-</body>
-</html>
+
+@endsection

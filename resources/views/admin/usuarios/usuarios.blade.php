@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('conteudo')
-       <div class="container border"  id = "header" style = "width:998px;background-image:url(background.png);">
+       <div class="container border" >
 
         <!-- LISTA DE OPÇÕES -->
         <div class="row align-items-center justify-content-center" style = "background-color:#dff0d8; width:998px;height:12vh;">
@@ -13,10 +13,10 @@
                 <!-- Adicionar usuário -->
                 <a  href="{{route('admin_usuarios_cadastrar_page')}}" style = "background-color:#ffff;font-size:4vh;color:inherit;" class="btn btn-default border"> Adicionar usuário</a>
             </div>
-            <div class = "col">
+            {{-- <div class = "col">
                 <!-- Trocar senha -->
                 <a  href="{{route('trocarSenhaUsuario')}}" style = "background-color:#ffff;font-size:4vh;color:inherit;" class="btn btn-default border"> Trocar senha</a>
-            </div>
+            </div> --}}
             <div class = "col">
                 <!-- Logout -->
                 <a  href="{{route('logout')}}" style = "background-color:#ffff;font-size:4vh;color:inherit;" class="btn btn-default border"> Sair</a>
@@ -45,20 +45,21 @@
                     <th scope="row">{{$user->nome}}</th>
                         <td>{{$user->siape}}</td>
                         <td>{{$user->email}}</td>
-                        <td>{{$user->telefonecelular}}</td>
+                        <td>{{$user->telefone}}</td>
                         <td>{{$user->cargo}}</td>
                         <td>{{$user->setor}}</td>
                         <td>
                             <ul>
                                 <li class="opcoes">
                                     <a href="{{ route("admin_usuarios_editar_page", $user->siape) }}">
+                                        editar
                                         <i class="bi bi-pen"></i>
                                     </a>
                                 </li>
                                 @if(! ($user->is_admin))
                                     <li class="opcoes opcoes_vermelho">
                                         <a class="opcoes opcoes_vermelho" onclick="return confirm('Você tem certeza?')" href="{{route('admin_usuarios_remover', $user->siape)}}">
-                                            <i class="bi bi-trash3"></i>
+                                            remover<i class="bi bi-trash3"></i>
                                         </a>
                                     </li>
                                 @endif

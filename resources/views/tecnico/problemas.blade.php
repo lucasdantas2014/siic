@@ -8,8 +8,8 @@
                 <tr class="row">
                     <th class="col-md-2"> Nome da chave</th>
                     <th class="col-md-2"> Descrição</th>
-                    <th class="col-md-1"> Resolvido em</th>
-                    <th class="col-md-2"> Sala </th>
+                    <th class="col-md-2"> Resolvido em</th>
+                    <th class="col-md-1"> Sala </th>
                     <th class="col-md-2"> Data de registro </th>
                     <th class="col-md-1"> Status </th>
                     <th class="col-md-2"> Opções </th>
@@ -19,11 +19,11 @@
             <tbody>
                 @foreach($problemas as $problema)
                     <tr class="row">
-                        <td class="col"> {{ $problema->titulo }}</td>
+                        <td class="col-md-2"> {{ $problema->titulo }}</td>
                         <td class="col-md-2"> {{ $problema->descricao }}</td>
-                        <td class="col-md-1"> {{ $problema->data_resolvido ?? '-' }}</td>
-                        <td class="col-md-2"> {{ $problema->sala->nome }}</td>
-                        <td class="col-md-2"> {{ $problema->created_at }}</td>
+                        <td class="col-md-2"> {{ $problema->data_resolvido ? \Carbon\Carbon::parse($problema->data_resolvido)->format('d/m/Y H:i:s') : '-' }}</td>
+                        <td class="col-md-1"> {{ $problema->sala->nome }}</td>
+                        <td class="col-md-2"> {{ $problema->created_at ? \Carbon\Carbon::parse($problema->created_at)->format('d/m/Y H:i:s') : '-' }}</td>
                         @if( $problema->status == \App\Models\Problema::STATUS_PENDENTE)
                             <td class="col-md-1"> Pendente</td>
                             <td class="col-md-2"><a href="{{ route('tecnico_problema_resolver', [$problema->id]) }}" class="btn btn-primary"> Resolver</a></td>

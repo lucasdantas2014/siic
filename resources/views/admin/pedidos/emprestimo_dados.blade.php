@@ -30,8 +30,8 @@
 
                 <!-- CONTROLE AR -->
 
-                    <label for="chave" class="form-label mt-3"><h5>Qual controle de ar condicionado você usará?:</h5> </label>
-                    <input name="controle"  style = "width:20rem;"id="controle" class="form-control" placeholder = "Digite aqui" >
+                    {{-- <label for="chave" class="form-label mt-3"><h5>Qual controle de ar condicionado você usará?:</h5> </label>
+                    <input name="controle"  style = "width:20rem;"id="controle" class="form-control" placeholder = "Digite aqui" > --}}
 
                 <!-- MATERIAL EXTRA -->
 

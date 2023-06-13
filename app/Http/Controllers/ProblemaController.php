@@ -6,6 +6,7 @@ use App\Models\Problema;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class ProblemaController extends Controller
 {
@@ -22,6 +23,7 @@ class ProblemaController extends Controller
 
         $problema->status = Problema::STATUS_RESOLVIDO;
         $problema->tecnico_id = Auth::id();
+        $problema->data_resolvido = Carbon::now();
         $problema->save();
 
         return redirect(route('tecnico_problemas'));

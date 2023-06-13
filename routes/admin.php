@@ -89,8 +89,7 @@ Route::get('respostaperiodo',[PedidoController::class,'respondePeriodo'])->name(
 Route::get('pedidoschave',[PedidoController::class,'pedidosChaveIndex'])->name('pedidoschave');
 Route::get('respostachave',[PedidoController::class,'respondeChave'])->name('respostachave');
 
-
-
+// Route::get('salas', [::class, 'index'])->name('user.index');
 Route::get('buscar-chaves-por-categoria',[PedidoController::class,'buscarChavesPorCategoria'])->name('admin_buscar_chaves_por_categoria');
 // RELATÓRIO DE PROBLEMAS
 Route::get('indexProblemas',[PedidoController::class,'indexProblemas'])->name('indexProblemas');

@@ -36,8 +36,8 @@
             <!-- LISTA DE PEDIDOS -->
             <div class="col d-flex flex-column align-items-center">
                 <!-- TÍTULO -->
-                    <h3 class = 'px-5 py-3'>Laboratórios ativos</h3>
-                <!-- BUSCA -->
+                    <h3 class = 'px-5 py-3'>Laboratórios Reservados</h3>
+                {{-- <!-- BUSCA -->
                     <form action="buscacategoria" method="get" class = "mt-3">
                                     <select name="categoria" id = "categoria" class = "form-control-lg">
                                         <option selected value = "#">Busque por categoria</option>
@@ -56,13 +56,13 @@
                                         <option value="Construção de Edifícios">Construção de Edifícios</option>
                                     </select>
                                     <input type="submit" value="Buscar" class = 'btn-lg ml-1'>
-                </form>
+                </form> --}}
                 <!-- LISTA -->
                 <div class="container pt-4">
                     <table class="table">
                             <thead>
                                 <tr>
-                                    <th scope="col">Categoria</th>
+                                    <th scope="col">Sala</th>
                                     <th scope ="col">Usuário</th>
                                     <th scope="col">Chave</th>
                                     <th scope="col">Hora Início</th>
@@ -71,10 +71,10 @@
                             <tbody>
                                 @foreach($pedidos as $pedido)
                                     <tr>
-                                        <th>{{$pedido->chave->categoria}}</td>
+                                        <th>{{$pedido->chave->sala->nome}}</td>
                                         <td>{{$pedido->user->nome}}</td>
-                                        <td>{{$pedido->chave->nomelab}}</td>
-                                        <td>{{$pedido->created_at}}</td>
+                                        <td>{{$pedido->chave->nome}}</td>
+                                        <td>{{\Carbon\Carbon::parse($pedido->created_at)->format('d/m/Y H:i:s')}}</td>
                                     </tr>
                                 @endforeach
                             </tbody>

@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('conteudo')
-    <div class="container border"  id = "header" style = "width:998px;background-image:url(background.png);">
+    <div class="container border" >
         <!-- LISTA DE OPÇÕES -->
         <div class="row align-items-center justify-content-center" style = "background-color:#dff0d8; width:998px;height:12vh;">
             <div class = "col">
@@ -46,28 +46,28 @@
         <div class="container mt-4" style = "width:998px" text-center>
             <table class="table">
                 <thead>
-                <tr>
-                    <th scope="col">Chave</th>
-                    <th scope="col">Sala</th>
-                    <th scope="col">Descrição</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Opções</th>
+                <tr class="row">
+                    <th class="col-md-2" scope="col">Chave</th>
+                    <th class="col-md-2" scope="col">Sala</th>
+                    <th class="col-md-2" scope="col">Descrição</th>
+                    <th class="col-md-2" scope="col">Status</th>
+                    <th class="col-md-4" scope="col">Opções</th>
                 </tr>
                 </thead>
                 <tbody>
                 @foreach($chaves as $chave)
-                    <tr>
-                        <td>{{$chave->nome}}</td>
-                        <td>{{$chave->sala->nome}}</td>
-                        <td>{{$chave->descricao}}</td>
-                        <td>@if($chave->disponivel == true)
+                    <tr class="row">
+                        <td class="col-md-2">{{$chave->nome}}</td>
+                        <td class="col-md-2">{{$chave->sala->nome}}</td>
+                        <td class="col-md-2">{{$chave->descricao}}</td>
+                        <td class="col-md-2">@if($chave->disponivel == true)
                                 <strong style = "color:green">Dispnível!</strong>
                             @endif
                             @if($chave->disponivel == false)
                                 <strong style = "color:red">Indisponível!</strong>
                             @endif
                         </td>
-                        <td>
+                        <td class="col-md-4">
                             <ul>
                                 <li class="opcoes">
                                     <a href="{{ route("admin_chaves_editar_page", $chave->nome) }}">

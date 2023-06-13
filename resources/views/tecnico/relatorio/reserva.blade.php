@@ -16,7 +16,7 @@
 
             <h1 class="col-md-12">Relatório de reservas</h1>
 
-            <p class="col-md-12 mb-2">Relatório das reservas ocorreidas entre 01/02/2003 à 10/02/2023</p>
+            <p class="col-md-12 mb-2">{{ $mensagem ?? "" }}</p>
 
         </div>
     </div>
