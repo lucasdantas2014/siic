@@ -6,6 +6,7 @@
     },
     "devDependencies": {
         "@popperjs/core": "^2.11.6",
+        "@types/bootstrap": "^5.2.8",
         "axios": "^1.1.2",
         "bootstrap": "^5.2.3",
         "install": "^0.13.0",
@@ -17,7 +18,10 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
-        "bootstrap-icons": "^1.10.3"
+        "@fortawesome/fontawesome-free": "^6.4.2",
+        "@types/jquery": "^3.5.25",
+        "bootstrap-icons": "^1.10.3",
+        "jquery": "^3.7.1"
     },
     "name": "siic",
     "description": "<p align=\"center\"><a href=\"https://laravel.com\" target=\"_blank\"><img src=\"https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg\" width=\"400\" alt=\"Laravel Logo\"></a></p>",

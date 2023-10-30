@@ -13,6 +13,9 @@
     <link rel="stylesheet" href="/css/styles.css">
 
     @vite(['resources/js/app.js'])
+
+    @livewireStyles
+
 </head>
 
 <body>
@@ -49,6 +52,7 @@
     </div>
 
 </div>
+    @livewireScripts
 
 @yield('conteudo')
 

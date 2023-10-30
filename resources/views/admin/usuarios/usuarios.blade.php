@@ -1,95 +1,59 @@
 @extends('layouts.admin')
 
 @section('conteudo')
-       <div class="container border" >
+    <div id="div-usuarios" class="text-center mt-3 mb-4">
+        <div class="row">
+            <h2 class="col-4">Lista de usuários</h2>
 
-        <!-- LISTA DE OPÇÕES -->
-        <div class="row align-items-center justify-content-center" style = "background-color:#dff0d8; width:998px;height:12vh;">
-            <div class = "col">
-                <!-- LOGIN -->
-                <a  href="{{route('admin_dashboard')}}" style = "background-color:#ffff;font-size:4vh;color:inherit;" class="btn btn-default border"> Início</a>
-            </div>
-            <div class = "col">
-                <!-- Adicionar usuário -->
-                <a  href="{{route('admin_usuarios_cadastrar_page')}}" style = "background-color:#ffff;font-size:4vh;color:inherit;" class="btn btn-default border"> Adicionar usuário</a>
-            </div>
-            {{-- <div class = "col">
-                <!-- Trocar senha -->
-                <a  href="{{route('trocarSenhaUsuario')}}" style = "background-color:#ffff;font-size:4vh;color:inherit;" class="btn btn-default border"> Trocar senha</a>
-            </div> --}}
-            <div class = "col">
-                <!-- Logout -->
-                <a  href="{{route('logout')}}" style = "background-color:#ffff;font-size:4vh;color:inherit;" class="btn btn-default border"> Sair</a>
+            <div id="div-botao-adicionar-usuario" class="col-md-8">
+                <button
+                    type="button"
+                    id="botao-adicionar-usuario"
+                    class="btn btn-default botao-verde"
+                    data-bs-toggle="modal"
+                    data-bs-target="#cadastrarUsuarioModal">
+                    + Adicionar Usuário
+                </button>
             </div>
         </div>
+
+        <livewire:dynamic-table-usuarios />
     </div>
 
-    <!-- LISTA DE USUÁRIOS -->
-    <div class="container text-center mt-3 " style = "width:998px">
-            <h3>Lista de usuários</h3>
-            <table class="table mt-3">
-                <thead>
-                    <tr>
-                        <th scope="col">Nome</th>
-                        <th scope="col">SIAPE</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Telefone celular</th>
-                        <th scope="col">Cargo</th>
-                        <th scope="col">Setor</th>
-                        <th scope="col">Opções</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($users as $user)
-                    <tr>
-                    <th scope="row">{{$user->nome}}</th>
-                        <td>{{$user->siape}}</td>
-                        <td>{{$user->email}}</td>
-                        <td>{{$user->telefone}}</td>
-                        <td>{{$user->cargo}}</td>
-                        <td>{{$user->setor}}</td>
-                        <td>
-                            <ul>
-                                <li class="opcoes">
-                                    <a href="{{ route("admin_usuarios_editar_page", $user->siape) }}">
-                                        editar
-                                        <i class="bi bi-pen"></i>
-                                    </a>
-                                </li>
-                                @if(! ($user->is_admin))
-                                    <li class="opcoes opcoes_vermelho">
-                                        <a class="opcoes opcoes_vermelho" onclick="return confirm('Você tem certeza?')" href="{{route('admin_usuarios_remover', $user->siape)}}">
-                                            remover<i class="bi bi-trash3"></i>
-                                        </a>
-                                    </li>
-                                @endif
-                            </ul>
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-                </table>
-    </div>
-</body>
+{{--    @include('admin.usuarios.modal_adicionar')--}}
 <style>
+
+    #div-usuarios {
+        color: #3EA14E;
+        font-family: Roboto-Bold, serif;
+    }
+
+    #botao-adicionar-usuario {
+        max-width: 200px;
+        float: right;
+        font-size: 14px !important;
+        margin-right: 20px;
+    }
+
     .opcoes {
         display: inline;
-        margin: 5px;
-        padding: 5px;
         list-style: none;
-        background-color: #c9ebaf;
         border-radius: 5px;
         text-decoration: none;
+        font-size: 13px;
     }
 
     .opcoes_vermelho {
-        background-color: #ebafaf;
+        color: #A30D11 !important;
     }
 
     .opcoes a {
         text-decoration: none;
         color: #000;
+    }
 
+    #tabela-usuarios {
+        background-color: #FFFFFF;
     }
 </style>
 @endsection

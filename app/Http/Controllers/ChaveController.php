@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Chave;
 use App\Models\Sala;
+use App\Models\Pedido;
 use Illuminate\Http\Request;
 
 class ChaveController extends Controller
@@ -23,7 +24,7 @@ class ChaveController extends Controller
         Chave::create([
             'nome' => $request->nomelab,
             'descricao' => $request->descricao,
-            'disponivel' => false,
+            'disponivel' => true,
             'sala_id' => $request->sala
         ]);
 
@@ -39,13 +40,15 @@ class ChaveController extends Controller
 
     public function editarChave(Request $request) {
         $data = $request->all();
-        $user = Chave::where('nome', $data['nome'])
+
+        $chave = Chave::where('id', $data['chave_id'])
             ->first();
 
-        $user->descricao = $data['descricao'];
-        $user->categoria = $data['categoria'];
+        // dd($data);
+        $chave->nome = $data['nome'];
+        $chave->descricao = $data['descricao'];
 
-        $user->save();
+        $chave->save();
 
         return redirect()->route('admin_chaves');
     }
@@ -64,6 +67,8 @@ class ChaveController extends Controller
     public function removerChave(String $nome){
         $chave = Chave::where('nome', $nome)
             ->first();
+
+        Pedido::where('chave_id', $chave->id)->delete();
 
         $chave->delete();
 

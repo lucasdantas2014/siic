@@ -30,10 +30,6 @@
                 <!-- Lista de usuários -->
                 <a  href="{{route('admin_usuarios')}}" style = "background-color:#ffff;font-size:4vh;color:inherit;" class="btn btn-default border">Lista de usuários</a>
             </div>
-            <div class = "col">
-                <!-- Logout -->
-                <a  href="{{route('logout')}}" style = "background-color:#ffff;font-size:4vh;color:inherit;" class="btn btn-default border"> Sair</a>
-            </div>
         </div>
     </div>
 

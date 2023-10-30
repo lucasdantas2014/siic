@@ -1,0 +1,44 @@
+.conteudo {
+    width: 100%;
+}
+
+.card-sessao {
+    background-color: #EEE;
+    border-radius: 5px;
+    margin-top: 30px;
+    height: 100px;
+}
+.card-sessao:hover {
+    background-color: #AAA;
+}
+
+.card-sessao p {
+    color: #000;
+}
+
+#div-filtros {
+    display: flex;
+}
+
+.div-filtros label {
+    display: block !important;
+    width: 100% !important;
+}
+
+.card-sessao a {
+    text-decoration: none;
+    color: inherit;
+}
+.card-sessao a:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+.card-sessao h3 {
+    display: inline;
+}
+
+.card-sessao img {
+    width: 50px;
+    height: 50px;
+}

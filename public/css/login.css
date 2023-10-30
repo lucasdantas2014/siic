@@ -1,0 +1,56 @@
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+#div-main {
+    background-color: #50EB78;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+#div-form {
+    background-color: #FFFFFF;
+    width: 500px;
+    height: 350px;
+    min-height: fit-content;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+}
+
+#titulo {
+    background-color: #EB3D45;
+    color: #FFFFFF;
+    width: fit-content;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+    margin-top: 15px;
+}
+
+form label {
+    font-weight: bolder;
+}
+
+form button {
+    background-color: #50EB78;
+    border-radius: 10px;
+    padding: 10px;
+    border: #50EB78 solid 1px;
+    font-size: 16px;
+    font-weight: bolder;
+}

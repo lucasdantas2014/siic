@@ -1,8 +1,26 @@
-/* Fonts */
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+// Fonts
+@import url('https://fonts.bunny.net/css?family=Nunito');
+@font-face {
+    font-family: Roboto, sans-serif;
+    src: url("../fonts/Roboto-Medium.ttf");
+}
 
-/* Variables */
+@font-face {
+    font-family: Roboto-Black;
+    src: url("../fonts/Roboto-Black.ttf");
+}
+
+@font-face {
+    font-family: Roboto-Bold;
+    src: url("../fonts/Roboto-Bold.ttf");
+}
+
+
+// Variables
 @import 'variables';
 
-/* Bootstrap */
-@import '~bootstrap/scss/bootstrap';
+// Bootstrap
+@import 'bootstrap/scss/bootstrap';
+
+@import "@fortawesome/fontawesome-free/css/all.css";
+

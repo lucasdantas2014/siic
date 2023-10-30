@@ -2,6 +2,8 @@
 
 @section('conteudo')
 
+
+
     <div class="row justify-content-center align-items-center g-2">
         <div class="col-12 m-2 text-center">
 

@@ -9,6 +9,22 @@ class Sala extends Model
 {
     use HasFactory;
 
+    const CATEGORIAS = [
+        'Padrão',
+        'Física',
+        'Matematica',
+        'Linguagens e Códigos',
+        'Biologia',
+        'Humanas',
+        'Ginásio',
+        'Petróleo e Gás',
+        'Informática',
+        'Quimíca',
+        'Ambiente Administrativo',
+        'Construção de Edifícios',
+        'Outro'
+    ];
+
     protected $table = 'salas';
 
     protected $fillable = [

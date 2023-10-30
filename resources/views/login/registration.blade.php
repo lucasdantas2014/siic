@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Adicionar usuário - Sistema de Chaves</title>
+    <title>Sistema Chaves</title>
     <link rel="stylesheet" href="/css/styles.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,7 +11,7 @@
 </head>
 <body>
         <!-- CABEÇALHO -->
-        <div class="container border"  id = "header" style = "width:998px;background-image:url(background.png);">   
+        <div class="container border"  id = "header" style = "width:998px;background-image:url(background.png);">
             <div class="row" style = "width:100%;">
                 <div class = "col-2">
                     <img src="logo_campus.png" class = "p-3">
@@ -45,29 +45,29 @@
                     <!-- NOME -->
                     <label for="" class="form-label"><h5>Nome do usuário: </h5></label>
                     <input type="text" name="nome" style = "width:20rem" id="" class="form-control mb-4" placeholder="Digite aqui: ">
-            
+
                     <!-- SIAPE -->
-                   
+
                     <label for="" class="form-label"><h5>SIAPE do usuário: </h5></label>
                     <input type="text" name="siape" style = "width:20rem" id="" class="form-control mb-4" placeholder="Digite aqui:">
-                    
+
                     <!-- SENHA -->
-                    
+
                     <label for="" class="form-label"><h5>Senha: </h5> </label>
                     <input type="password" name="password" style = "width:20rem" id="" class="form-control mb-4" placeholder="Digite aqui: ">
 
                     <!-- Setor -->
-                   
+
                     <label for="" class="form-label"><h5>Setor do usuário: </h5></label>
                     <input type="text" name="setor" style = "width:20rem" id="" class="form-control mb-4" placeholder="Digite aqui:">
-                    
+
                     <!-- Telefone celular -->
-                   
+
                     <label for="" class="form-label"><h5>Telefone celular do usuário </h5></label>
                     <input type="text" name="telefonecelular" style = "width:20rem" id="" class="form-control mb-4" placeholder="Digite aqui:">
 
                     <!-- Email -->
-                   
+
                     <label for="" class="form-label"><h5>Email do usuário </h5></label>
                     <input type="text" name="email" style = "width:20rem" id="" class="form-control mb-4" placeholder="Digite aqui:">
 

@@ -205,8 +205,6 @@ class PedidoController extends Controller
 
         $pedidosQuery = Pedido::where('user_id', Auth::id());
 
-
-
 //        dd($pedidosQuey);
         $chaves = $pedidosQuery
             ->select(['chave_id'])
@@ -281,11 +279,10 @@ class PedidoController extends Controller
 
         $pedidos = $pedidosQuery
             ->with('chave.sala')
+            ->with('user')
             ->get()
             ->toArray();
 
-
-//        return view('tecnico.relatorio.reserva', ['pedidos' => $pedidos]);
         view()->share('pedidos', $pedidos);
         view()->share('mensagem', $mensagem);
 

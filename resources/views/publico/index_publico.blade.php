@@ -1,15 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laboratórios ativos - Sistema de Chaves</title>
+    <title>Sistema Chaves - SIIC</title>
     <link rel="stylesheet" href="/css/styles.css">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
+    <link href="{{ asset('css/publico.css') }}" rel="stylesheet">
+
+    @livewireStyles()
 </head>
 <body>
     <!-- CABEÇALHO -->
@@ -34,55 +37,10 @@
     <div class="container" style = "width:998px;">
         <div class="row justify-content-center align-items-center ">
             <!-- LISTA DE PEDIDOS -->
-            <div class="col d-flex flex-column align-items-center">
-                <!-- TÍTULO -->
-                    <h3 class = 'px-5 py-3'>Laboratórios Reservados</h3>
-                {{-- <!-- BUSCA -->
-                    <form action="buscacategoria" method="get" class = "mt-3">
-                                    <select name="categoria" id = "categoria" class = "form-control-lg">
-                                        <option selected value = "#">Busque por categoria</option>
-                                        <option value="Sala de Aula">Sala de Aula</option>
-                                        <option value="Mineração">Mineração</option>
-                                        <option value="Física">Física</option>
-                                        <option value="Matematica">Matemática</option>
-                                        <option value="Linguagens e Códigos">Linguagens e Códigos</option>
-                                        <option value="Biologia">Biologia</option>
-                                        <option value="Humanas">Humanas</option>
-                                        <option value="Ginásio">Ginásio</option>
-                                        <option value="Petróleo e Gás">Petróleo e Gás</option>
-                                        <option value="Informática">Informática</option>
-                                        <option value="Quimíca">Química</option>
-                                        <option value="Ambiente Administrativo">Ambiente Administrativo</option>
-                                        <option value="Construção de Edifícios">Construção de Edifícios</option>
-                                    </select>
-                                    <input type="submit" value="Buscar" class = 'btn-lg ml-1'>
-                </form> --}}
-                <!-- LISTA -->
-                <div class="container pt-4">
-                    <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Sala</th>
-                                    <th scope ="col">Usuário</th>
-                                    <th scope="col">Chave</th>
-                                    <th scope="col">Hora Início</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($pedidos as $pedido)
-                                    <tr>
-                                        <th>{{$pedido->chave->sala->nome}}</td>
-                                        <td>{{$pedido->user->nome}}</td>
-                                        <td>{{$pedido->chave->nome}}</td>
-                                        <td>{{\Carbon\Carbon::parse($pedido->created_at)->format('d/m/Y H:i:s')}}</td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                </div>
-            </div>
+            <livewire:dynamic-table-publico />
+
         </div>
     </div>
-
+    @livewireScripts()
 </body>
 </html>

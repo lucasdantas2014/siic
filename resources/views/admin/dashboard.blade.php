@@ -1,52 +1,87 @@
 @extends('layouts.admin')
 
+@section('conteudo')
+
+@endsection
+
+@extends('layouts.admin')
 
 @section('conteudo')
-<div>
-    <div class = "container text-center">
-        <img src="Logotipo_IFET.svg" class = "m-5" style = "width:20%;height:20%;">
-    </div>
+    <!-- LISTA DE USUÁRIOS -->
+    <div id="div-usuarios" class="container text-center mt-3 " style = "width:998px">
+        <div class="row">
+            <h2 class="col-4">Lista de usuários</h2>
+            <div class="col-md-8">
+                <button>
 
-    <!-- Código HTML da página -->
-
-<!-- Verifica se a sessão flash existe e exibe o modal -->
-    @if (session('mensagem') ?? session('mensagemDevolucao') ?? session('mensagemTroca') ?? session('mensagemRegistro') ?? session('mensagemLaboratorio'))
-        <div class="modal fade" id="modalMensagem" tabindex="-1" role="dialog" aria-labelledby="modalMensagemLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-body d-flex flex-column align-items-center">
-                        <img src="Certo.png" style = "width:40%;height:40%">
-                        @if(session('mensagem'))
-                            <h5 class = "mt-2 mb-4" >{{ session('mensagem') }}</h5>
-                            <p style = "color:black"><strong>Laboratório:  </strong>{{session('dados')->chave->nomelab}}</p>
-                            <p style = "color:black"><strong>Usuário:  </strong>{{session('dados')->user->nome}}</p>
-                        @endif
-
-                        @if(session('mensagemDevolucao'))
-                            <h5 class = "mt-2 mb-4" >{{ session('mensagemDevolucao') }}</h5>
-                        @endif
-                        @if(session('mensagemTroca'))
-                            <h5 class = "mt-2 mb-4" >{{ session('mensagemTroca') }}</h5>
-                        @endif
-
-                        @if(session('mensagemRegistro'))
-                            <h5 class = "mt-2 mb-4">{{session('mensagemRegistro')}}</h5>
-                        @endif
-                        @if(session('mensagemLaboratorio'))
-                            <h5 class = "mt-2 mb-4">{{session('mensagemLaboratorio')}}</h5>
-                        @endif
-                    </div>
-                </div>
+                </button>
             </div>
         </div>
 
-        <!-- Ativa o modal automaticamente -->
-        <script>
-            $(document).ready(function() {
-                $('#modalMensagem').modal('show');
-            });
-        </script>
-    @endif
 
-</div>
+        <table class="table mt-3">
+            <thead>
+            <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">SIAPE</th>
+                <th scope="col">Email</th>
+                <th scope="col">Telefone celular</th>
+                <th scope="col">Cargo</th>
+                <th scope="col">Setor</th>
+                <th scope="col">Opções</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach($users as $user)
+                <tr>
+                    <th scope="row">{{$user->nome}}</th>
+                    <td>{{$user->siape}}</td>
+                    <td>{{$user->email}}</td>
+                    <td>{{$user->telefone}}</td>
+                    <td>{{$user->cargo}}</td>
+                    <td>{{$user->setor}}</td>
+                    <td>
+                        <ul>
+                            <li class="opcoes">
+                                <a href="{{ route("admin_usuarios_editar_page", $user->siape) }}">
+                                    editar
+                                    <i class="bi bi-pen"></i>
+                                </a>
+                            </li>
+                            @if(! ($user->is_admin))
+                                <li class="opcoes opcoes_vermelho">
+                                    <a class="opcoes opcoes_vermelho" onclick="return confirm('Você tem certeza?')" href="{{route('admin_usuarios_remover', $user->siape)}}">
+                                        remover<i class="bi bi-trash3"></i>
+                                    </a>
+                                </li>
+                            @endif
+                        </ul>
+                    </td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+    </div>
+    </body>
+    <style>
+        .opcoes {
+            display: inline;
+            margin: 5px;
+            padding: 5px;
+            list-style: none;
+            background-color: #c9ebaf;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .opcoes_vermelho {
+            background-color: #ebafaf;
+        }
+
+        .opcoes a {
+            text-decoration: none;
+            color: #000;
+
+        }
+    </style>
 @endsection

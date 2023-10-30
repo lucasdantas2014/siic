@@ -28,8 +28,9 @@
                 <thead class="thead-dark">
                     <tr>
                         <th class="col-md-3">Hora empréstimo</th>
-                        <th class="col-md-3">Chave</th>
-                        <th class="col-md-3">Local</th>
+                        <th class="col-md-2">Chave</th>
+                        <th class="col-md-2">Siape</th>
+                        <th class="col-md-2">Local</th>
                         <th class="col-md-3">Hora devolução</th>
                     </tr>
                 </thead>
@@ -39,6 +40,7 @@
                         <tr>
                             <td> {{ \Carbon\Carbon::parse($pedido['created_at'])->format('d/m/Y H:i:s') }} </td>
                             <td> {{ $pedido['chave']['nome'] }} </td>
+                            <td> {{ $pedido['user']['siape'] }}
                             <td> {{ $pedido['chave']['sala']['nome'] }} </td>
                             <td> {{ \Carbon\Carbon::parse($pedido['devolvido_em'])->format('d/m/Y H:i:s') ?? '-' }}</td>
                         </tr>

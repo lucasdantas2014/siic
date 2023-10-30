@@ -36,7 +36,6 @@
 
             <div class="col-md-3">
                 <h5 class="mt-4 fw-bold">Filtrar pela chaves</h5>
-                Implmentar seleção das chaves....
 
                 <select name="chave">
                     <option value="">Selecione uma chave</option>

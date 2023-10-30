@@ -5,115 +5,89 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu - Sistema de Chaves</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
 
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-
-    <link rel="stylesheet" href="/css/styles.css">
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-
-    @vite(['resources/js/app.js'])
-
+    @vite(['resources/css/admin.css'])
+    @vite(['resources/js/app.js', 'resources/sass/app.scss'])
 
     @yield('custom-head')
 
+    @livewireStyles
 </head>
 <body>
-
-    <div id="main">
-    <div id="header" class="row">
-        <div class="col-md-5">
-            <img src="{{asset('admin/logo_campus.png')}}">
+    <div class="row">
+        <div id="div-navbar" class="col-md-3">
+            @include('admin.navbar')
         </div>
-        <div class = "col-md-6">
-            <h1 class = "mt-4">Sistema de chaves</h1>
-        </div>
-        <div class = "col-md-1">
-            <a href="{{route('logout')}}">Sair</a>
+        <div id="div-conteudo" class="col-md-9">
+            @yield('conteudo')
         </div>
 
+        @include('layouts.footer_verde')
     </div>
 
-
-    <div id="navbar" class="row">
-        <div class = "col-md-3 navbar-item">
-            <!-- USUÁRIOS -->
-            <a  href="{{route('admin_usuarios')}}" style = "background-color:#ffff;font-size:4vh;color:inherit;" class="btn btn-default border">
-                <img src={{asset('admin/user.png')}}> Usuários
-            </a>
-        </div>
-
-        <div class = "col-md-2 navbar-item">
-            <a  href="{{route('admin_chaves')}}" style = "background-color:#ffff;font-size:4vh;color:inherit;" class="btn btn-default border">
-                <img src={{asset('admin/chaves.png')}}> Chaves
-            </a>
-        </div>
-
-        <div class = "col-md-2 navbar-item">
-            <!-- EMPRÉSTIMO-->
-            <a  href="{{route('admin_emprestimos')}}" class="btn btn-default border"> <img src={{asset('admin/emprestimo.png')}}>Empréstimo</a>
-        </div>
-
-        <div class = "col-md-2 navbar-item">
-            <!-- DEVOLUÇÃO -->
-            <a  href="{{route('admin_devolucao')}}" style = "background-color:#ffff;font-size:4vh;color:inherit;" class="btn btn-default border"> <img src={{asset('images/devolucao.png')}}>Devolução</a>
-        </div>
-
-        <div class = "col-md-3 navbar-item">
-            <!-- RELATÓRIOS -->
-            <a  href="{{route('verpedidos')}}" style = "background-color:#ffff;font-size:4vh;color:inherit;" class="btn btn-default border"> <img src={{asset('admin/history.png')}}>Relatórios</a>
-        </div>
-    </div>
-
-
-    @yield('conteudo')
-
-    @include('layouts.footer')
-
-    </div>
-
+    @livewireScripts
 </body>
 <style>
 
-    #main {
-        width: 998px;
-        margin-right: auto;
-        margin-left: auto;
-        display: flex;
-        align-items: center;
-        flex-direction: column;
+    body {
+        background-color: #F6F5F4;
+        height: 100vh;
+        /*overflow: hidden;*/
     }
 
-    #header {
-        width: 100%;
-        height: 175px;
-        background-image: url(background.png);
-        display: flex;
-        align-items: center;
+    #div-navbar {
+        padding-right: 0;
     }
 
-    #navbar {
-        width: 100%;
-        justify-content: center;
+    #div-conteudo {
+        padding-right: 0;
+        padding-left: 0;
     }
 
-    #navbar img {
-        height: 50px;
+    .botao-verde {
+        background-color: #3EA14E;
+        color: #FFFFFF !important;
+        max-width: 200px;
+        float: right;
+        font-size: 14px !important;
+        margin-right: 20px;
+
     }
 
-    .navbar-item {
-        padding: 0;
+    .botao-verde:hover {
+        background-color: #FFFFFF !important;
+        color: #3EA14E !important;
     }
 
-    .navbar-item a {
+    .botao-branco {
+        background-color: #FFFFFF !important;
+        color: #3EA14E !important;
+        max-width: 200px;
+        float: right;
+        font-size: 14px !important;
+        margin-right: 20px;
+    }
 
+    .botao-branco:hover{
+        background-color: #3EA14E;
+        color: #FFFFFF !important;
+    }
+
+    .botao-cinza {
+        max-width: 200px;
+        float: right;
+        font-size: 14px !important;
+        margin-right: 20px;
+        background-color: #F6F5F4;
+        color: #3EA14E;
+        border: solid 1px #3EA14E;
+    }
+
+    .botao-cinza:hover {
+        background-color: #3EA14E;
+        color: #FFFFFF !important;
     }
 
 </style>
