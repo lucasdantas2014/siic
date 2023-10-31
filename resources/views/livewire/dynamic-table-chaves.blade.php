@@ -12,43 +12,47 @@
     </div>
 
     <div class="container mt-4" style = "width:998px" text-center>
-        <table class="table">
+        <table id="tabela-usuarios" class="table table-striped mt-4">
             <thead>
-            <tr class="row">
-                <th class="col-md-2" scope="col">Chave</th>
-                <th class="col-md-2" scope="col">Sala</th>
-                <th class="col-md-2" scope="col">Descrição</th>
-                <th class="col-md-2" scope="col">Status</th>
-                <th class="col-md-4" scope="col">Opções</th>
+            <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">Categoria</th>
+                <th scope="col">Descrição</th>
+                <th scope="col">Disponível</th>
+                <th scope="col">Opções</th>
             </tr>
             </thead>
             <tbody>
             @foreach($chaves as $chave)
-                <tr class="row">
-                    <td class="col-md-2">{{$chave->nome}}</td>
-                    <td class="col-md-2">{{$chave->sala->nome}}</td>
-                    <td class="col-md-2">{{$chave->descricao}}</td>
-                    <td class="col-md-2">@if($chave->disponivel == true)
+                <tr>
+                    <td >{{$chave->nome}}</td>
+                    <td >{{$chave->sala->nome}}</td>
+                    <td >{{$chave->descricao}}</td>
+                    <td >@if($chave->disponivel == true)
                             <strong style = "color:green">Disponível!</strong>
                         @endif
                         @if($chave->disponivel == false)
                             <strong style = "color:red">Indisponível!</strong>
                         @endif
                     </td>
-                    <td class="col-md-4">
-                        <ul class="lista-opcoes">
+                    <td>
+                        <ul>
                             <li class="opcoes">
-                                <a href="{{ route("admin_chaves_editar_page", $chave->nome) }}">
-                                    <i class="bi bi-pen"></i> editar
-                                </a>
+                                <button
+                                    {{--                                    wire:click="editarUsuario({{ $user->id }})"--}}
+                                    {{--                                    class="btn btn-default botao-verde"--}}
+                                >
+                                    <i class="fa-regular fa-pen-to-square"></i>
+                                </button>
                             </li>
                             <li class="opcoes opcoes_vermelho">
-                                <a class="opcoes opcoes_vermelho" onclick="return confirm('Você tem certeza?')" href="{{route('admin_chaves_remover', $chave->nome)}}">
-                                    <i class="bi bi-trash3"></i> remover
-                                </a>
+                                <button class="opcoes opcoes_vermelho" onclick="return confirm('Você tem certeza?')">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </button>
                             </li>
+
                             <li class="opcoes opcoes_azul">
-                                <a onclick="return confirm('Você tem certeza?')" href="{{route('admin_chaves_alterar_status', $chave->nome)}}">
+                                <a onclick="return confirm('Você tem certeza?')" href="{{route('admin_salas_alterar_status', $chave->nome)}}">
                                     <i class="bi bi-trash3"></i> alterar status
                                 </a>
                             </li>
@@ -60,38 +64,14 @@
             </tbody>
         </table>
     </div>
+
+    @include('admin.chaves.modal_adicionar')
 </div>
+
 <style>
-    .lista-opcoes {
-        display: flex;
-        padding: 0px
-    }
-    .opcoes {
-        display: inline;
-        margin: 5px;
-        padding: 5px;
-        list-style: none;
-        background-color: #c9ebaf;
-        border-radius: 5px;
-        text-decoration: none;
-    }
-
-    .opcoes_vermelho {
-        background-color: #ebafaf;
-    }
-
-    .opcoes_azul {
-        background-color: #afbbeb;
-    }
-
-
-    .opcoes a {
-        text-decoration: none;
-        color: #000;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-
+    .opcoes button {
+        background-color: inherit;
+        border: solid 0 #F6F5F4;
     }
 </style>
 </div>

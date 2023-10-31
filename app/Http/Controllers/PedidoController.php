@@ -25,7 +25,8 @@ class PedidoController extends Controller
 {
 
     public function index(){
-        return view("admin.pedidos.emprestimo");
+        $chaves = Chave::all();
+        return view("admin.pedidos.emprestimo", ['chaves' => $chaves]);
 
     }
     public function registrarEmprestimo(Request $request){
@@ -73,9 +74,6 @@ class PedidoController extends Controller
 
         $pedido->status = false;
         $pedido->devolvido_em = Carbon::now();
-
-
-        // dd($request->input('sala'))
 
         if($request->problema == ""){
             $pedido->observacoes = "Nenhum";

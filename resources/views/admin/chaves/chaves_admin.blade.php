@@ -1,21 +1,25 @@
 @extends('layouts.admin')
 
 @section('conteudo')
-    <div class="container border" >
-        <!-- LISTA DE OPÇÕES -->
-        <div class="row align-items-center justify-content-center" style = "background-color:#dff0d8; width:998px;height:12vh;">
-            <div class = "col">
-                <!-- LOGIN -->
-                <a  href="{{route('admin_dashboard')}}" style = "background-color:#ffff;font-size:4vh;color:inherit;" class="btn btn-default border"> Início</a>
-            </div>
-            <div class = "col">
-                <!-- Adicionar chave -->
-                <a  href="{{route('adicionarchave')}}" style = "background-color:#ffff;font-size:4vh;color:inherit;" class="btn btn-default border"> Adicionar chave</a>
+
+    <div id="div-usuarios" class="text-center mt-3 mb-4">
+        <div class="row">
+            <h2 class="col-4">Lista de salas</h2>
+
+            <div id="div-botao-adicionar-usuario" class="col-md-8">
+                <button
+                    type="button"
+                    id="botao-adicionar-usuario"
+                    class="btn btn-default botao-verde"
+                    data-bs-toggle="modal"
+                    data-bs-target="#cadastrarUsuarioModal">
+                    + Adicionar Chave
+                </button>
             </div>
         </div>
-    </div>
 
-    <livewire:dynamic-table-chaves />
+        <livewire:dynamic-table-chaves/>
+    </div>
 
 
 @endsection()

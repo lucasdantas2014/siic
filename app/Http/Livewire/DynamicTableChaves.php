@@ -12,10 +12,11 @@ class DynamicTableChaves extends Component
     public $chaves=[];
     public $chave;
     public $mensagem;
+    public $salas;
 
     public function render()
     {
-
+        $this->salas = Sala::all();
         if(!empty($this->categoria)) {
             $this->chaves = Chave::whereRelation('sala', 'categoria', $this->categoria)
                 ->get();

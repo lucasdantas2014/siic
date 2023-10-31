@@ -1,25 +1,58 @@
 @extends('layouts.admin')
 
 @section('conteudo')
+    <div id="div-usuarios" class="text-center mt-3 mb-4">
+        <div class="row">
+            <h2 class="col-4">Lista de salas</h2>
 
-
-<div class="container border" >
-    <!-- LISTA DE OPÇÕES -->
-    <div class="row align-items-center justify-content-center" style = "background-color:#dff0d8; width:998px;height:12vh;">
-        <div class = "col">
-            <!-- LOGIN -->
-            <a  href="{{route('admin_dashboard')}}" style = "background-color:#ffff;font-size:4vh;color:inherit;" class="btn btn-default border"> Início</a>
+            <div id="div-botao-adicionar-usuario" class="col-md-8">
+                <button
+                    type="button"
+                    id="botao-adicionar-usuario"
+                    class="btn btn-default botao-verde"
+                    data-bs-toggle="modal"
+                    data-bs-target="#cadastrarUsuarioModal">
+                    + Adicionar Sala
+                </button>
+            </div>
         </div>
-        <div class = "col">
-            <!-- Adicionar chave -->
-            <a  href="{{route('admin_salas_cadastrar_page')}}" style = "background-color:#ffff;font-size:4vh;color:inherit;" class="btn btn-default border"> Adicionar sala</a>
-        </div>
 
+        <livewire:dynamic-table-salas />
     </div>
-</div>
 
-    <h3 class="mt-4">Salas</h3>
+    <style>
 
-    <livewire:dynamic-table-salas />
+        #div-usuarios {
+            color: #3EA14E;
+            font-family: Roboto-Bold, serif;
+        }
 
+        #botao-adicionar-usuario {
+            max-width: 200px;
+            float: right;
+            font-size: 14px !important;
+            margin-right: 20px;
+        }
+
+        .opcoes {
+            display: inline;
+            list-style: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        .opcoes_vermelho {
+            color: #A30D11 !important;
+        }
+
+        .opcoes a {
+            text-decoration: none;
+            color: #000;
+        }
+
+        #tabela-usuarios {
+            background-color: #FFFFFF;
+        }
+    </style>
 @endsection

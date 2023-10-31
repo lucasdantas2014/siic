@@ -1,9 +1,7 @@
 <div>
 
 {{--        <input type="text" name="nome-usuario" placeholder="Filtrar por nome de usuário."/>--}}
-
-    {{$usuario}}
-        <table id="tabela-usuarios" class="table table-striped mt-4">
+     <table id="tabela-usuarios" class="table table-striped mt-4">
             <thead>
             <tr>
                 <th scope="col">Nome</th>
@@ -18,7 +16,7 @@
             <tbody>
             @foreach($usuarios as $user)
                 <tr wire:click="editarUsuario({{ $user->id }})">
-                    <th scope="row">{{$user->nome}}</th>
+                    <td>{{$user->nome}}</td>
                     <td>{{$user->siape}}</td>
                     <td>{{$user->email}}</td>
                     <td>{{$user->telefone}}</td>
@@ -48,8 +46,7 @@
             </tbody>
         </table>
 
-        @include('admin.usuarios.modal_editar')
-    </div>
+        @include('admin.usuarios.modal_adicionar')
 </div>
 
 <style>

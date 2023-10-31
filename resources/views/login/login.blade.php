@@ -41,10 +41,6 @@
 
     <style>
 
-        body{
-            background-color: #3EA14E;
-        }
-
         #div-main {
             display: flex;
             width: 100vw;

@@ -22,7 +22,7 @@ class ChaveController extends Controller
     public function store(Request $request){
 
         Chave::create([
-            'nome' => $request->nomelab,
+            'nome' => $request->nome,
             'descricao' => $request->descricao,
             'disponivel' => true,
             'sala_id' => $request->sala

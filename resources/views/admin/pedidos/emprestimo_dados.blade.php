@@ -2,51 +2,49 @@
 
 @section('conteudo')
 
-    <!-- CORPO -->
-    <div class="container justify-content-center align-items-center" style = "width:998px;">
+    <div id="div-main" class="row ">
 
-         <!-- FORMULÁRIO DE EMPRÉSTIMO -->
-        <div class="container m-2 text-center">
+        <div class="container text-center" style = "width:998px">
 
-            <h3 class="m-3" >Emprestimo</h3>
-            <form action="{{route('admin_registrar_emprestimo')}}" method="post" class = "d-flex flex-column align-items-center">
-                <!-- CHAVE -->
-                @csrf
+            <h3 class="mb-5 mt-4" >Emprestimo</h3>
 
-                <input type="hidden" name="siape" value="{{ $user_siape }}">
+            <div id="div-form">
 
-{{--                <div class="flex flex-col justify-around h-full">--}}
-{{--                    @livewire('dropdowns')--}}
-{{--                </div>--}}
+                <span>Insira seu nº SIAPE e senha</span>
 
-                <label class = "mt-4 "><h5>Chave</h5></label>
-                <select name="chave" id = "sala" class = "form-control-lg">
-                    @foreach($chaves as $chave)
-                        <option value="{{ $chave->id }}">
-                            {{ $chave->nome }} - {{ $chave->sala->nome }}
-                        </option>
-                    @endforeach
-                </select>
+                <form action="{{route('admin_registrar_emprestimo')}}" method="post">
 
-                <!-- CONTROLE AR -->
+                    <input type="hidden" name="siape" value="{{ $user_siape }}">
 
-                    {{-- <label for="chave" class="form-label mt-3"><h5>Qual controle de ar condicionado você usará?:</h5> </label>
-                    <input name="controle"  style = "width:20rem;"id="controle" class="form-control" placeholder = "Digite aqui" > --}}
+                    @csrf
+                    <div class="form-group ">
+                        <label for="siape">SIAPE</label>
+                        <input type="text" id="siape" class="form-control" name="siape" readonly value="{{ $user_siape }}">
+                        @if ($errors->has('siape'))
+                            <span class="text-danger">{{ $errors->first('siape') }}</span>
+                        @endif
+                    </div>
 
-                <!-- MATERIAL EXTRA -->
+                    <div>
+                        <label for="chave" class="form-label mt-3">Caso você  leve algum material extra, digite aqui: </label>
+                        <input name="material_extra" style = "width:20rem;" id="material_extra" class="form-control" placeholder = "Digite aqui">
+                    </div>
 
-                    <label for="chave" class="form-label mt-3"><h5>Caso você  leve algum material extra, digite aqui:</h5> </label>
-                    <input name="material_extra" style = "width:20rem;" id="material_extra" class="form-control" placeholder = "Digite aqui">
+                    <div>
+                        <label for="chave" class="form-label mt-3">Caso você  leve algum material extra, digite aqui: </label>
+                        <input name="material_extra" style = "width:20rem;" id="material_extra" class="form-control" placeholder = "Digite aqui">
+                    </div>
 
-                <!-- BOTÃO ENVIAR -->
-                <input type="submit" class = "btn  btn-success btn-md mt-2" value="Enviar">
-            </form>
-            @if($errors->any)
-                @foreach($errors->all() as $error)
-                    <p>{{$error}}</p>
-                @endforeach
-            @endif
+                    <div class="col-md-12">
+                        <button type="submit" class="mt-4 btn col-md-10">Entrar</button>
+                    </div>
+                    @if($errors->any)
+                        @foreach($errors->all() as $error)
+                            <p>{{$error}}</p>
+                        @endforeach
+                    @endif
+                </form>
+            </div>
         </div>
-
     </div>
 @endsection

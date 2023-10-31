@@ -2,32 +2,101 @@
 
 @section('conteudo')
 
-    <!-- CORPO -->
-    <div class="row justify-content-center align-items-center g-2">
+    <div id="div-main" class="row ">
 
-         <!-- FORMULÁRIO DE EMPRÉSTIMO -->
         <div class="container text-center" style = "width:998px">
 
             <h3 class="mb-5 mt-4" >Emprestimo</h3>
-            <form action="{{route('admin_login_emprestimo')}}" method="post" class = "d-flex flex-column align-items-center justify-content-center">
-                <!-- SIAPE -->
+
+            <div id="div-form">
+
+                <span>Insira seu nº SIAPE e senha</span>
+
+                <form action="{{route('admin_login_emprestimo')}}" method="post">
                     @csrf
 
-                    <label for="chave" class="form-label"><h5>SIAPE da pessoa que deseja pegar a chave:</h5> </label>
-                    <input name="siape" id="siape" class="form-control" style = "width:20rem" placeholder = "Digite aqui">
-                <!-- SENHA -->
+                        <div class="form-group col-md-12">
+                            <label for="siape">SIAPE</label>
+                            <input type="text" id="siape" class="form-control" name="siape" autofocus>
+                            @if ($errors->has('siape'))
+                                <span class="text-danger">{{ $errors->first('siape') }}</span>
+                            @endif
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="password" class="mt-4">Senha</label>
+                            <input type="password" id="password" class="form-control" name="senha">
 
-                    <label for="chave" class="form-label mt-4"><h5>Senha:</h5> </label>
-                    <input  type = "password" name="senha" id="senha" class="form-control" style = "width:20rem" placeholder = "Digite aqui">
+                            @if ($errors->has('password'))
+                                <span class="text-danger">{{ $errors->first('password') }}</span>
+                            @endif
+                            @if(session()->has('alert'))
 
-                <!-- BOTÃO ENVIAR -->
-                <input type="submit" class = "btn btn-success btn-md mt-4" value="Enviar">
-                @if($errors->any)
-                    @foreach($errors->all() as $error)
-                        <p>{{$error}}</p>
-                    @endforeach
-                @endif
-            </form>
+                                <p>{{ session()->get('alert') }}</p>
+
+                            @endif
+                        </div>
+                        <div class="col-md-12">
+                            <button type="submit" class="mt-4 btn col-md-10">Entrar</button>
+                        </div>
+                        @if($errors->any)
+                            @foreach($errors->all() as $error)
+                                <p>{{$error}}</p>
+                            @endforeach
+                        @endif
+                </form>
+            </div>
         </div>
     </div>
+
+    <style>
+
+        body{
+            background-color: #3EA14E;
+        }
+
+        #div-main {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            font-family: Roboto-Black , serif;
+        }
+
+        #div-form {
+            margin: auto;
+            width: 450px;
+            height: fit-content;
+            background-color: #fff;
+            border-radius: 15px;
+            padding: 50px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #div-titulo {
+            text-align: center;
+        }
+
+        #div-form span {
+            font-family: Roboto-Bold, serif;
+            margin-bottom: 20px;
+        }
+
+        #div-form input {
+            border: 1px solid #000000;
+            background-color: #FFFFFF;
+        }
+
+        #div-form label {
+            float: left;
+        }
+
+        #div-form button {
+            background-color: #3EA14E;
+            color: #FFFFFF;
+            width: 100%;
+        }
+    </style>
+    </style>
 @endsection
