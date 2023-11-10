@@ -17,10 +17,10 @@
 </head>
 <body>
     <div class="row">
-        <div id="div-navbar" class="col-md-3">
+        <div id="div-navbar" class="col-md-2">
             @include('admin.navbar')
         </div>
-        <div id="div-conteudo" class="col-md-9">
+        <div id="div-conteudo" class="col-md-10">
             @yield('conteudo')
         </div>
 

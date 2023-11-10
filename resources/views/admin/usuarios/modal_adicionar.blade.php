@@ -86,6 +86,7 @@
         background-color: #F6F5F4;
         font-family: Roboto-Black, serif;
         font-size: 12px;
+        color: #000000;
     }
 
     #div-botao-acoes {

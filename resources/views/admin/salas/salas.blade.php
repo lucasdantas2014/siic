@@ -1,7 +1,8 @@
 @extends('layouts.admin')
 
 @section('conteudo')
-    <div id="div-usuarios" class="text-center mt-3 mb-4">
+
+    <div id="div-salas" class="text-center mt-3 mb-4">
         <div class="row">
             <h2 class="col-4">Lista de salas</h2>
 
@@ -22,7 +23,7 @@
 
     <style>
 
-        #div-usuarios {
+        #div-salas {
             color: #3EA14E;
             font-family: Roboto-Bold, serif;
         }
@@ -51,7 +52,7 @@
             color: #000;
         }
 
-        #tabela-usuarios {
+        #tabela-salas {
             background-color: #FFFFFF;
         }
     </style>

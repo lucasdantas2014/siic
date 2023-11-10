@@ -14,45 +14,71 @@
         <div id="menu" class="mt-4">
 
             <ul class="nav navbar-nav">
-                <li class="nav-item active">
+                <li class="nav-item {{ \Illuminate\Support\Facades\Route::is('admin_usuarios') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('admin_usuarios') }}">
-                        <img src={{ \Illuminate\Support\Facades\Vite::asset('resources/images/vectors/usuario_branco.png') }} alt="" alt="">
+                        <img src={{
+                                \Illuminate\Support\Facades\Route::is('admin_usuarios') ?
+                                \Illuminate\Support\Facades\Vite::asset('resources/images/vectors/usuario_branco.png') :
+                                \Illuminate\Support\Facades\Vite::asset('resources/images/vectors/usuario.png') }} alt="" alt="">
                         Usuários
                     </a>
                 </li>
 
-                <li class="nav-item">
+                <li class="nav-item {{ \Illuminate\Support\Facades\Route::is('admin_salas') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('admin_salas') }}">
-                        <img src={{ \Illuminate\Support\Facades\Vite::asset('resources/images/vectors/sala.png') }} alt="" alt="">
+                        <img src={{
+                                \Illuminate\Support\Facades\Route::is('admin_salas') ?
+                                \Illuminate\Support\Facades\Vite::asset('resources/images/vectors/sala_branco.png') :
+                                \Illuminate\Support\Facades\Vite::asset('resources/images/vectors/sala.png') }} alt="" alt="">
                         Salas
                     </a>
                 </li>
 
-                <li class="nav-item">
+                <li class="nav-item {{ \Illuminate\Support\Facades\Route::is('admin_chaves') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('admin_chaves') }}">
-                        <img src={{ \Illuminate\Support\Facades\Vite::asset('resources/images/vectors/chave.png') }} alt="" alt="">
+                        <img src={{
+                                \Illuminate\Support\Facades\Route::is('admin_chaves') ?
+                                \Illuminate\Support\Facades\Vite::asset('resources/images/vectors/chave_branco.png') :
+                                \Illuminate\Support\Facades\Vite::asset('resources/images/vectors/chave.png') }} alt="" alt="">
                         Chaves
                     </a>
                 </li>
 
-                <li class="nav-item">
+                <li class="nav-item {{ \Illuminate\Support\Facades\Route::is('admin_emprestimos') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('admin_emprestimos') }}">
-                        <img src={{ \Illuminate\Support\Facades\Vite::asset('resources/images/vectors/emprestimo.png') }} alt="" alt="">
+                        <img src={{
+                                \Illuminate\Support\Facades\Route::is('admin_emprestimos') ?
+                                \Illuminate\Support\Facades\Vite::asset('resources/images/vectors/emprestimo_branco.png') :
+                                \Illuminate\Support\Facades\Vite::asset('resources/images/vectors/emprestimo.png') }} alt="" alt="">
                         Empréstimo
                     </a>
                 </li>
 
-                <li class="nav-item">
+                <li class="nav-item {{ \Illuminate\Support\Facades\Route::is('admin_devolucao') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('admin_devolucao') }}">
-                        <img src={{ \Illuminate\Support\Facades\Vite::asset('resources/images/vectors/devolucao.png') }} alt="" alt="">
+                        <img src={{
+                                \Illuminate\Support\Facades\Route::is('admin_devolucao') ?
+                                \Illuminate\Support\Facades\Vite::asset('resources/images/vectors/devolucao_branco.png') :
+                                \Illuminate\Support\Facades\Vite::asset('resources/images/vectors/devolucao.png') }} alt="" alt="">
                         Devolução
                     </a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link">
-                        <img src={{ \Illuminate\Support\Facades\Vite::asset('resources/images/vectors/relatorio.png') }} alt="" alt="">
+                <li class="nav-item {{ \Illuminate\Support\Facades\Route::is('admin_relatorios') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('admin_relatorios') }}">
+                        <img src={{
+                                \Illuminate\Support\Facades\Route::is('admin_relatorios') ?
+                                \Illuminate\Support\Facades\Vite::asset('resources/images/vectors/relatorio_branco.png') :
+                                \Illuminate\Support\Facades\Vite::asset('resources/images/vectors/relatorio.png') }} alt="" alt="">
                         Relatórios
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('logout') }}">
+                        <img src={{
+                                \Illuminate\Support\Facades\Vite::asset('resources/images/vectors/sair.png') }} alt="" alt="">
+                        Sair
                     </a>
                 </li>
             </ul>

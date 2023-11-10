@@ -1,6 +1,6 @@
 <div>
 
-    <table id="tabela-usuarios" class="table table-striped mt-4">
+    <table id="tabela-salas" class="table table-striped mt-4">
         <thead>
             <tr>
                 <th scope="col">Nome</th>
@@ -61,7 +61,3 @@
         border: solid 0 #F6F5F4;
     }
 </style>
-
-<script>
-
-</script>

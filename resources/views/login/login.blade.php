@@ -48,6 +48,7 @@
             flex-direction: row;
             align-items: center;
             font-family: Roboto-Black , serif;
+            background-color: #3EA14E;
         }
 
         #div-form {

@@ -14,24 +14,33 @@
 
                 <form action="{{route('admin_registrar_emprestimo')}}" method="post">
 
-                    <input type="hidden" name="siape" value="{{ $user_siape }}">
-
                     @csrf
                     <div class="form-group ">
                         <label for="siape">SIAPE</label>
-                        <input type="text" id="siape" class="form-control" name="siape" readonly value="{{ $user_siape }}">
+                        <input type="text" id="siape" class="form-control" name="siape" disabled readonly value="{{ $user_siape }}">
                         @if ($errors->has('siape'))
                             <span class="text-danger">{{ $errors->first('siape') }}</span>
                         @endif
                     </div>
 
-                    <div>
-                        <label for="chave" class="form-label mt-3">Caso você  leve algum material extra, digite aqui: </label>
-                        <input name="material_extra" style = "width:20rem;" id="material_extra" class="form-control" placeholder = "Digite aqui">
+                    <div class="mt-4">
+                        <label class = "mt-4 ">Chave</label>
+                        <select name="chave" id = "sala" class = "form-control-lg">
+                            @if (count($chaves) == 0)
+                                <option value="">
+                                    Nenhuma chave está reservada
+                                </option>
+                            @endif
+                            @foreach($chaves as $chave)
+                                <option value="{{ $chave->id }}">
+                                    {{ $chave->nome }} - {{ $chave->sala->nome }}
+                                </option>
+                            @endforeach
+                        </select>
                     </div>
 
                     <div>
-                        <label for="chave" class="form-label mt-3">Caso você  leve algum material extra, digite aqui: </label>
+                        <label for="chave" class="form-label mt-3">Outro material: </label>
                         <input name="material_extra" style = "width:20rem;" id="material_extra" class="form-control" placeholder = "Digite aqui">
                     </div>
 
@@ -47,4 +56,56 @@
             </div>
         </div>
     </div>
+
+    <style>
+
+        body{
+            background-color: #3EA14E;
+        }
+
+        #div-main {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            font-family: Roboto-Black , serif;
+            font-size: 14px;
+        }
+
+        #div-form {
+            margin: auto;
+            width: 450px;
+            height: fit-content;
+            background-color: #fff;
+            border-radius: 15px;
+            padding: 50px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #div-form form {
+            width: 100%;
+        }
+
+        #div-form span {
+            font-family: Roboto-Bold, serif;
+            margin-bottom: 20px;
+        }
+
+        #div-form input {
+            border: 1px solid #000000;
+            background-color: #FFFFFF;
+        }
+
+        #div-form label {
+            float: left;
+        }
+
+        #div-form button {
+            background-color: #3EA14E;
+            color: #FFFFFF;
+            width: 100%;
+        }
+    </style>
 @endsection
