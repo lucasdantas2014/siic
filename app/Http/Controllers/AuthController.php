@@ -123,11 +123,15 @@ class AuthController extends Controller
         return redirect("login")->withSuccess('You are not allowed to access');
     }
 
-    public function signOut() {
-        Session::flush();
+    public function signOut(Request $request) {
         Auth::logout();
 
-        return Redirect('login');
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+        dd('teste');
+
+        return redirect('/');
     }
 
     public function firstloginIndex(){

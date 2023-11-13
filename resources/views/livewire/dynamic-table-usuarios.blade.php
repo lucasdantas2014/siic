@@ -25,17 +25,20 @@
                     <td>
                         <ul>
                             <li class="opcoes">
-                                <button
-{{--                                    wire:click="editarUsuario({{ $user->id }})"--}}
-{{--                                    class="btn btn-default botao-verde"--}}
-                                >
-                                    <i class="fa-regular fa-pen-to-square"></i>
+                                <button>
+                                    <a href="{{ route('admin_usuarios_editar_page', $user->siape) }}">
+                                        <i class="fa-regular fa-pen-to-square"></i>
+                                    </a>
                                 </button>
                             </li>
                             @if(! ($user->is_admin))
                                 <li class="opcoes opcoes_vermelho">
-                                    <button class="opcoes opcoes_vermelho" onclick="return confirm('Você tem certeza?')">
-                                        <i class="fa-solid fa-trash-can"></i>
+                                    <button class="opcoes opcoes_vermelho" >
+                                        <a href="{{ route('admin_usuarios_remover', $user->siape) }}"
+                                            class="opcoes opcoes_vermelho" 
+                                            onclick="return confirm('Você tem certeza que deseja remover o usuário de siape: {{ $user->siape }}?')">
+                                            <i class="fa-solid fa-trash-can"></i>
+                                        </a>
                                     </button>
                                 </li>
                             @endif
@@ -46,14 +49,15 @@
             </tbody>
         </table>
 
+        <div>
+            {{ $usuarios->links() }}
+        </div>
+
         @include('admin.usuarios.modal_adicionar')
 </div>
 
 <style>
-    .opcoes button {
-        background-color: inherit;
-        border: solid 0 #F6F5F4;
-    }
+
 </style>
 
 <script>

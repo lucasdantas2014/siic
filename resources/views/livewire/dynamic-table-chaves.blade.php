@@ -63,6 +63,10 @@
             </tbody>
         </table>
 
+        <div>
+            {{ $chaves->links() }}
+        </div>
+
         @include('admin.chaves.modal_adicionar')
 
     </div>

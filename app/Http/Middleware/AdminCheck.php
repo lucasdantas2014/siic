@@ -20,9 +20,10 @@ class AdminCheck
 
         if (auth()->user()) {
             if (auth()->user()->is_admin) {
+                dd('aqui');
                 return $next($request);
             }
         }
-        return redirect("");
+        return redirect('login')->with('alert','Senha ou SIAPE inválido!');
     }
 }

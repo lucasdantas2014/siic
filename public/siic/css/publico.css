@@ -1,0 +1,8 @@
+#div-filtros {
+    display: flex;
+}
+
+.div-filtros label {
+    display: block !important;
+    width: 100% !important;
+}

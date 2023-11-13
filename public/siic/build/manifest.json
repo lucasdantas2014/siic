@@ -1,0 +1,157 @@
+{
+  "node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.ttf": {
+    "file": "assets/fa-brands-400-003f1154.ttf",
+    "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.ttf"
+  },
+  "node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff2": {
+    "file": "assets/fa-brands-400-faae6fc0.woff2",
+    "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff2"
+  },
+  "node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.ttf": {
+    "file": "assets/fa-regular-400-7d81a1a7.ttf",
+    "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.ttf"
+  },
+  "node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff2": {
+    "file": "assets/fa-regular-400-9169d8be.woff2",
+    "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff2"
+  },
+  "node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.ttf": {
+    "file": "assets/fa-solid-900-cea79b34.ttf",
+    "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.ttf"
+  },
+  "node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2": {
+    "file": "assets/fa-solid-900-886c8611.woff2",
+    "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2"
+  },
+  "node_modules/@fortawesome/fontawesome-free/webfonts/fa-v4compatibility.ttf": {
+    "file": "assets/fa-v4compatibility-455e8e72.ttf",
+    "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-v4compatibility.ttf"
+  },
+  "node_modules/@fortawesome/fontawesome-free/webfonts/fa-v4compatibility.woff2": {
+    "file": "assets/fa-v4compatibility-335fd7d9.woff2",
+    "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-v4compatibility.woff2"
+  },
+  "resources/css/admin.css": {
+    "file": "assets/admin-fda14262.css",
+    "isEntry": true,
+    "src": "resources/css/admin.css"
+  },
+  "resources/css/app.css": {
+    "file": "assets/app-9e93a3fc.css",
+    "isEntry": true,
+    "src": "resources/css/app.css"
+  },
+  "resources/fonts/Roboto-Black.ttf": {
+    "file": "assets/Roboto-Black-5ace0d08.ttf",
+    "src": "resources/fonts/Roboto-Black.ttf"
+  },
+  "resources/fonts/Roboto-Bold.ttf": {
+    "file": "assets/Roboto-Bold-ec685a46.ttf",
+    "src": "resources/fonts/Roboto-Bold.ttf"
+  },
+  "resources/fonts/Roboto-Light.ttf": {
+    "file": "assets/Roboto-Light-c576c506.ttf",
+    "src": "resources/fonts/Roboto-Light.ttf"
+  },
+  "resources/fonts/Roboto-Medium.ttf": {
+    "file": "assets/Roboto-Medium-9d0d55a3.ttf",
+    "src": "resources/fonts/Roboto-Medium.ttf"
+  },
+  "resources/fonts/Roboto-Regular.ttf": {
+    "file": "assets/Roboto-Regular-4e147ab6.ttf",
+    "src": "resources/fonts/Roboto-Regular.ttf"
+  },
+  "resources/images/logo_ifpb.png": {
+    "file": "assets/logo_ifpb-58081850.png",
+    "src": "resources/images/logo_ifpb.png"
+  },
+  "resources/images/vectors/chave.png": {
+    "file": "assets/chave-ea409918.png",
+    "src": "resources/images/vectors/chave.png"
+  },
+  "resources/images/vectors/chave_branco.png": {
+    "file": "assets/chave_branco-aa24dd13.png",
+    "src": "resources/images/vectors/chave_branco.png"
+  },
+  "resources/images/vectors/devolucao.png": {
+    "file": "assets/devolucao-2694db93.png",
+    "src": "resources/images/vectors/devolucao.png"
+  },
+  "resources/images/vectors/devolucao_branco.png": {
+    "file": "assets/devolucao_branco-fca6b445.png",
+    "src": "resources/images/vectors/devolucao_branco.png"
+  },
+  "resources/images/vectors/emprestimo.png": {
+    "file": "assets/emprestimo-0f5867b2.png",
+    "src": "resources/images/vectors/emprestimo.png"
+  },
+  "resources/images/vectors/emprestimo_branco.png": {
+    "file": "assets/emprestimo_branco-2048b292.png",
+    "src": "resources/images/vectors/emprestimo_branco.png"
+  },
+  "resources/images/vectors/problema.png": {
+    "file": "assets/problema-dbdaee74.png",
+    "src": "resources/images/vectors/problema.png"
+  },
+  "resources/images/vectors/relatorio.png": {
+    "file": "assets/relatorio-261e24ec.png",
+    "src": "resources/images/vectors/relatorio.png"
+  },
+  "resources/images/vectors/relatorio_branco.png": {
+    "file": "assets/relatorio_branco-a74078ca.png",
+    "src": "resources/images/vectors/relatorio_branco.png"
+  },
+  "resources/images/vectors/reserva.png": {
+    "file": "assets/reserva-7f25a803.png",
+    "src": "resources/images/vectors/reserva.png"
+  },
+  "resources/images/vectors/sair.png": {
+    "file": "assets/sair-fa90ee4d.png",
+    "src": "resources/images/vectors/sair.png"
+  },
+  "resources/images/vectors/sala.png": {
+    "file": "assets/sala-63916e91.png",
+    "src": "resources/images/vectors/sala.png"
+  },
+  "resources/images/vectors/sala_branco.png": {
+    "file": "assets/sala_branco-3aa0e731.png",
+    "src": "resources/images/vectors/sala_branco.png"
+  },
+  "resources/images/vectors/usuario.png": {
+    "file": "assets/usuario-79e94b48.png",
+    "src": "resources/images/vectors/usuario.png"
+  },
+  "resources/images/vectors/usuario_branco.png": {
+    "file": "assets/usuario_branco-dae15c06.png",
+    "src": "resources/images/vectors/usuario_branco.png"
+  },
+  "resources/js/app.css": {
+    "file": "assets/app-a5f56970.css",
+    "src": "resources/js/app.css"
+  },
+  "resources/js/app.js": {
+    "assets": [
+      "assets/fa-brands-400-faae6fc0.woff2",
+      "assets/fa-brands-400-003f1154.ttf",
+      "assets/fa-regular-400-9169d8be.woff2",
+      "assets/fa-regular-400-7d81a1a7.ttf",
+      "assets/fa-solid-900-886c8611.woff2",
+      "assets/fa-solid-900-cea79b34.ttf",
+      "assets/fa-v4compatibility-335fd7d9.woff2",
+      "assets/fa-v4compatibility-455e8e72.ttf",
+      "assets/Roboto-Medium-9d0d55a3.ttf",
+      "assets/Roboto-Black-5ace0d08.ttf",
+      "assets/Roboto-Bold-ec685a46.ttf"
+    ],
+    "css": [
+      "assets/app-a5f56970.css"
+    ],
+    "file": "assets/app-e5ef24ce.js",
+    "isEntry": true,
+    "src": "resources/js/app.js"
+  },
+  "resources/sass/app.scss": {
+    "file": "assets/app-a5f56970.css",
+    "src": "resources/js/app.css"
+  }
+}

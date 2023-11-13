@@ -6,15 +6,23 @@ use Carbon\Carbon;
 use Livewire\Component;
 use App\Models\Pedido;
 use App\Models\Sala;
+use Livewire\WithPagination;
 
 class DynamicTablePublico extends Component
 {
+
+    use WithPagination;
+
+    protected $paginationTheme = 'bootstrap';
+    protected $pedidos=[];
+
     public $categoria;
-    public $pedidos=[];
     public $pedido;
     public $mensagem;
     public $nomeSala='';
     public $nomePessoa='';
+
+    public $itensPorPagina = 8;
 
     public function render()
     {
@@ -26,7 +34,7 @@ class DynamicTablePublico extends Component
                 ->with('user')
 //                ->where('user.nome', 'LIKE', '%' . $this->nomePessoa . '%')
 //                ->where('chave.sala.nome', 'LIKE', '%' . $this->nomeSala . '%')
-                ->get();
+                ->paginate($this->itensPorPagina);
             $this->mensagem = '';
 
             if (count($this->pedidos) == 0) {
@@ -50,10 +58,10 @@ class DynamicTablePublico extends Component
                        $query->where('nome', 'LIKE', '%' . $this->nomeSala . '%');
                     });
                 })
-                ->get();
+                ->paginate($this->itensPorPagina);
         }
 
-        return view('livewire.dynamic-table-publico')
+        return view('livewire.dynamic-table-publico', ['pedidos' => $this->pedidos])
             ->withCategorias(Sala::CATEGORIAS);
     }
 }

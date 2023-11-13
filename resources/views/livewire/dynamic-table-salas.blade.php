@@ -52,6 +52,10 @@
         </tbody>
     </table>
 
+    <div>
+        {{ $salas->links() }}
+    </div>
+
     @include('admin.salas.modal_adicionar')
 </div>
 

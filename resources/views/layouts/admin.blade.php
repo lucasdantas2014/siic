@@ -90,8 +90,6 @@
         color: #FFFFFF !important;
     }
 
-    <style>
-
      #div-usuarios {
          color: #3EA14E;
          font-family: Roboto-Bold, serif;
@@ -124,5 +122,34 @@
     #tabela-usuarios {
         background-color: #FFFFFF;
     }
+
+    .opcoes button {
+        background-color: inherit;
+        border: solid 0 #F6F5F4;
+    }
+
+    .pagination > li > a,
+    .pagination > li > span {
+        color: #3EA14E; // use your own color here
+    }
+
+    .pagination > .active > a,
+    .pagination > .active > a:focus,
+    .pagination > .active > a:hover,
+    .pagination > .active > span,
+    .pagination > .active > span:focus,
+    .pagination > .active > span:hover {
+        background-color: #3EA14E;
+        border-color: #3EA14E;
+    }
+
+    .page-item button{
+        color: #3EA14E !important;
+    }
+
+    nav {
+        height: fit-content;
+    }
+
 </style>
 </html>

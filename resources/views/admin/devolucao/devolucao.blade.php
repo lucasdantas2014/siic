@@ -4,7 +4,7 @@
 
 <div id="div-devolucao" class="mt-3 mb-4">
     <div class="row">
-        <h2 class="col-4">Gerar Relatórios</h2>
+        <h2 class="col-4">Registro de devolução</h2>
     </div>
 
     <div id="div-form">

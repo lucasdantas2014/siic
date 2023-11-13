@@ -4,12 +4,17 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Sala;
+use Livewire\WithPagination;
 
 class DynamicTableSalas extends Component
 {
 
+    use WithPagination;
+
+    protected $paginationTheme = 'bootstrap';
+    protected $salas=[];
+
     public $categoria;
-    public $salas=[];
     public $sala;
     public $mensagem;
     public $nomeSala='';
@@ -20,7 +25,7 @@ class DynamicTableSalas extends Component
         if(!empty($this->categoria)) {
             $this->salas = Sala::where('categoria', $this->categoria)
                 ->where('nome', 'LIKE', '%' . $this->nomeSala . '%')
-                ->get();
+                ->paginate(8);
             $this->mensagem = '';
 
             if (count($this->salas) == 0) {
@@ -28,11 +33,11 @@ class DynamicTableSalas extends Component
             }
         } else {
             $this->salas = Sala::where('nome', 'LIKE', '%' . $this->nomeSala . '%')
-                ->get();
+                ->paginate(8);
             ;
         }
 
-        return view('livewire.dynamic-table-salas')
+        return view('livewire.dynamic-table-salas', ['salas' => $this->salas])
             ->withCategorias(Sala::CATEGORIAS);;
     }
 }

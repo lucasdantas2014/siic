@@ -44,7 +44,7 @@ class UserController extends Controller
         $user = User::where("siape", $siape)
             ->first();
 
-        return view('admin.usuarios.editar_usuario', ["user" => $user]);
+        return view('admin.usuarios.editar_usuario', ["usuario" => $user]);
     }
 
     public function editarUsuario(Request $request){

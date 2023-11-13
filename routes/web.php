@@ -18,7 +18,11 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get("/",[UserController::class, 'homePage'])->name('home_page');
+Route::get("/", function () {
+    return redirect('/siic/painel');
+})->name('home_page');
+
+Route::get("/painel",[UserController::class, 'homePage'])->name('painel');
 
 // Login
 Route::get('/login', [AuthController::class, 'loginPage'])->name('login_page');
@@ -26,7 +30,7 @@ Route::post('/login', [AuthController::class, 'login'])->name('login');
 
 
 Route::get('/custom-registration', [AuthController::class, 'customRegistration'])->name('register');
-Route::get('signout', [AuthController::class, 'signOut'])->name('signout');
+Route::post('signout', [AuthController::class, 'signOut'])->name('signout');
 
 // Retorna página de primeiro login
 Route::get('/firstlogin',[AuthController::class,'firstloginIndex'])->middleware('App\Http\Middleware\Authenticate');
