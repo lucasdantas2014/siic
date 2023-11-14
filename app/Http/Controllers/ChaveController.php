@@ -35,7 +35,13 @@ class ChaveController extends Controller
         $chave = Chave::where("nome", $nome)
             ->first();
 
-        return view('admin.chaves.editar_chave', ["chave" => $chave]);
+        $salas = Sala::all();
+
+        return view('admin.chaves.editar_chave',
+        [
+            "chave" => $chave,
+            "salas" => $salas
+        ]);
     }
 
     public function editarChave(Request $request) {
@@ -46,6 +52,7 @@ class ChaveController extends Controller
 
         // dd($data);
         $chave->nome = $data['nome'];
+        $chave->sala_id = $data['sala'];
         $chave->descricao = $data['descricao'];
 
         $chave->save();

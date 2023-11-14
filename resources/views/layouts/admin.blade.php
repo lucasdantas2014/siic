@@ -53,12 +53,14 @@
         float: right;
         font-size: 14px !important;
         margin-right: 20px;
+        border: 1px solid #3EA14E;
 
     }
 
     .botao-verde:hover {
         background-color: #FFFFFF !important;
         color: #3EA14E !important;
+        border: 1px solid #3EA14E;
     }
 
     .botao-branco {

@@ -2,33 +2,105 @@
 
 @section('conteudo')
 
-    <div class="container justify-content-center align-items-center" style = "width:998px">
-                <form action="{{route('admin_salas_editar')}}" method="post" class = "d-flex flex-column align-items-center">
-                    @csrf
-                        <h4 class="mb-4 mt-1" >Editar Sala</h4>
+<div id="div-devolucao" class="mt-3 mb-4">
+    <div class="row">
+        <h2 class="col-4">Editar Sala</h2>
+    </div>
 
-                        <input type="hidden" value="{{ $sala->id }}" name="sala_id"/>
-                        <label><h5>Nome da Sala</h5></label>
-                        <input class = "form-control" style = "width:20rem" type="text" name="nome" placeholder = "Digite o nome da chave aqui" value="{{ $sala->nome }}">
+    <div id="div-form">
+        <form action="{{route('admin_salas_editar')}}" method="post" class = "d-flex flex-column justify-content-center align-items-center" >
+            @csrf
+            <div class="row">
+                <input type="hidden" name="sala_id" value="{{ $sala->id }}" />
+                <div class="form-group">
+                    <label for="" class="form-label">Nome</label>
+                    <input type="text" name="nome" class="form-control mb-4" value="{{ $sala->nome }}">
+                </div>
 
-                       <label class = "mt-4 "><h5>Categoria do laboratório</h5></label>
-                       <select name="categoria" id ="categoria" class = "form-control-lg">
-                            {{-- <option selected value = "#">Busque por categoria</option> --}}
+                <div class="mb-3">
 
-                            @foreach (App\Models\Sala::CATEGORIAS as $categoria)
-                                @if($categoria == $sala->categoria)
-                                    <option value="{{ $categoria }}" selected> {{ $categoria }} </option>
-                                @else
-                                    <option value="{{ $categoria }}"> {{ $categoria }} </option>
-                                @endif
+                    <label class="mr-4">Categoria do laboratório</label>
+                    <select name="categoria" id ="categoria" class = "form-control-lg ml-4">
+                        <option selected value = "#">Busque por categoria</option>
 
-                            @endforeach
-                       </select>
+                        @foreach (App\Models\Sala::CATEGORIAS as $categoria)
+                            <option value="{{ $categoria }}" {{ $sala->categoria == $categoria ? 'selected' : '' }}> {{ $categoria }} </option>
+                        @endforeach
+                    </select>
+                </div>
+                <div>
+                    <label for = "descricao" class = "mt-4">Descrição</label>
+                    <textarea class = "mb-3 form-control" rows = "3" name="descricao" placeholder = "Faça uma descrição sobre o laboratório"> {{ $sala->descricao ?? '' }}</textarea>
 
-                        <label for = "descricao" class = "mt-4"><h5>Descrição</h5></label>
-                        <textarea style = "width:20rem;" class = "mb-3 form-control" rows = "3" name="descricao" placeholder = "Faça uma descrição sobre o laboratório">{{ $sala->descricao }}</textarea>
-
-                        <input class = "btn btn-success btn-md m-3"  type="submit" value="Salvar">
-                </form>
+                </div>
+                @if($errors->any)
+                    @foreach($errors->all() as $error)
+                        <p>{{$error}}</p>
+                    @endforeach
+                @endif
+                <div id="div-botao-acoes">
+                    <button type="submit" class="btn botao-verde">Salvar</button>
+                    <button type="button" class="btn botao-cinza" data-bs-dismiss="modal">Cancelar</button>
+                </div>
             </div>
-@endsection()
+        </form>
+    </div>
+    </div>
+</div>
+    @livewireScripts
+
+    <style>
+        #div-devolucao {
+            padding: 20px;
+            color: #3EA14E;
+            font-family: Roboto-Bold, serif;
+        }
+
+        #div-form {
+            color: #000;
+        }
+
+        #div-form form {
+            width: 40%;
+            font-size: 14px;
+        }
+
+        #div-form span {
+            font-family: Roboto-Bold, serif;
+            margin-bottom: 20px;
+        }
+
+        #div-form input {
+            border: 1px solid #000000;
+            background-color: #FFFFFF;
+            width: 100%;
+        }
+
+        .div-form-select {
+            border: 1px solid #000000;
+            background-color: #FFFFFF;
+            width: 100%;
+        }
+
+        #div-form label {
+            float: left;
+
+        }
+
+        #div-botao-acoes {
+            display: flex;
+            flex-direction: row;
+        }
+
+        #div-form button {
+            background-color: #3EA14E;
+            color: #FFFFFF;
+            width: 100%;
+        }
+
+        .h-vazio {
+            color: #F6F5F4;
+        }
+    </style>
+
+@endsection

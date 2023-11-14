@@ -30,17 +30,23 @@
                                 {{--                                    wire:click="editarUsuario({{ $user->id }})"--}}
                                 {{--                                    class="btn btn-default botao-verde"--}}
                             >
-                                <i class="fa-regular fa-pen-to-square"></i>
+                                <a href="{{ route('admin_salas_editar_page', $sala->nome) }}">
+                                    <i class="fa-regular fa-pen-to-square"></i>
+                                </a>
                             </button>
                         </li>
                             <li class="opcoes opcoes_vermelho">
-                                <button class="opcoes opcoes_vermelho" onclick="return confirm('Você tem certeza?')">
-                                    <i class="fa-solid fa-trash-can"></i>
+                                <button class="opcoes opcoes_vermelho">
+                                    <a href="{{ route('admin_salas_remover', $sala->nome) }}"
+                                        class="opcoes opcoes_vermelho"
+                                        onclick="return confirm('Você tem certeza que deseja remover a sala: {{ $sala->nome }}?')">
+                                        <i class="fa-solid fa-trash-can"></i>
+                                    </a>
                                 </button>
                             </li>
 
                         <li class="opcoes opcoes_azul">
-                            <a onclick="return confirm('Você tem certeza?')" href="{{route('admin_salas_alterar_status', $sala->nome)}}">
+                            <a onclick="return confirm('Você tem certeza que deseja alterar o status da sala: {{ $sala->nome }}?')" href="{{route('admin_salas_alterar_status', $sala->nome)}}">
                                 <i class="bi bi-trash3"></i> alterar status
                             </a>
                         </li>

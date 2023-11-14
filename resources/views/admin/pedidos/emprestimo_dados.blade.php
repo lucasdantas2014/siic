@@ -45,7 +45,7 @@
                     </div>
 
                     <div class="col-md-12">
-                        <button type="submit" class="mt-4 btn col-md-10">Entrar</button>
+                        <button type="submit" class="mt-4 col-md-10 btn botao-verde">Entrar</button>
                     </div>
                     @if($errors->any)
                         @foreach($errors->all() as $error)

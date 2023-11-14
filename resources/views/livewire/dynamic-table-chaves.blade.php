@@ -41,17 +41,24 @@
                                     {{--                                    wire:click="editarUsuario({{ $user->id }})"--}}
                                     {{--                                    class="btn btn-default botao-verde"--}}
                                 >
-                                    <i class="fa-regular fa-pen-to-square"></i>
+                                    <a href="{{ route('admin_chaves_editar_page', $chave->nome) }}">
+                                        <i class="fa-regular fa-pen-to-square"></i>
+                                    </a>
                                 </button>
                             </li>
-                            <li class="opcoes opcoes_vermelho">
-                                <button class="opcoes opcoes_vermelho" onclick="return confirm('Você tem certeza?')">
-                                    <i class="fa-solid fa-trash-can"></i>
-                                </button>
-                            </li>
+                                <li class="opcoes opcoes_vermelho">
+                                    <button class="opcoes opcoes_vermelho">
+                                        <a href="{{ route('admin_chaves_remover', $chave->nome) }}"
+                                            class="opcoes opcoes_vermelho"
+                                            onclick="return confirm('Você tem certeza que deseja remover a chave: {{ $chave->nome }}?')">
+                                            <i class="fa-solid fa-trash-can"></i>
+                                        </a>
+                                    </button>
+                                </li>
 
                             <li class="opcoes opcoes_azul">
-                                <a onclick="return confirm('Você tem certeza?')" href="{{route('admin_chaves_alterar_status', $chave->nome)}}">
+                                <a onclick="return confirm('Você tem certeza que deseja alterar o status da chave: {{ $chave->nome }}?')"
+                                    href="{{route('admin_chaves_alterar_status', $chave->nome)}}">
                                     <i class="bi bi-trash3"></i> alterar status
                                 </a>
                             </li>
