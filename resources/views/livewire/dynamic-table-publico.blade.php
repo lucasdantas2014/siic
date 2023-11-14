@@ -39,6 +39,7 @@
                         </tr>
                     </thead>
                     <tbody>
+                        {{ $pedidos ?? 'a' }}
                         @foreach($pedidos as $pedido)
                             <tr>
                                 <th>{{$pedido->chave->sala->nome}}</td>

@@ -24,12 +24,14 @@
                 <div class = "col-3 offset-5">
                     <h1 class = "mt-4">Sistema de chaves</h1>
                 </div>
-                <div id="div-login-link" class="col-2">
-                    <a  id="a-login" href="{{route('login_page')}}"> Login</a>
-                </div>
             </div>
         <!-- LISTA DE OPÇÕES -->
-
+        <div class="row align-items-center justify-content-center" style = "background-color:#dff0d8; width:998px;height:12vh;">
+        <div class = "col">
+                <!-- LOGIN -->
+                <a  href="{{route('login_page')}}" style = "background-color:#ffff;font-size:4vh;color:inherit;" class="btn btn-default border"> <img style = "width:5vh;height:5vh"  class = "mr-3" src="user.png"> Login</a>
+            </div>
+        </div>
     </div>
     <!-- CORPO -->
     <div class="container" style = "width:998px;">
@@ -40,20 +42,5 @@
         </div>
     </div>
     @livewireScripts()
-
-    <style>
-
-        #div-login-link {
-            display: flex;
-            text-align: right;
-            font-weight: bolder;
-        }
-        #a-login {
-            text-decoration: none;
-            color: #5f5757f0;
-            font-size: 20px
-        }
-
-    </style>
 </body>
 </html>

@@ -28,8 +28,7 @@ class DynamicTablePublico extends Component
     {
 
         if(!empty($this->categoria)) {
-            $this->pedidos = Pedido::where('created_at', '>=', Carbon::now()->subDay())
-                ->whereRelation('chave.sala', 'categoria', $this->categoria)
+            $this->pedidos = Pedido::whereRelation('chave.sala', 'categoria', $this->categoria)
                 ->where('status', Pedido::STATUS_PENDENTE)
                 ->with('user')
 //                ->where('user.nome', 'LIKE', '%' . $this->nomePessoa . '%')
@@ -47,8 +46,7 @@ class DynamicTablePublico extends Component
                 ->get()
                 ->toArray();
 
-            $this->pedidos = Pedido::where('created_at', '>=', Carbon::now()->subDay())
-                ->where('status', Pedido::STATUS_PENDENTE)
+            $this->pedidos = Pedido::where('status', Pedido::STATUS_PENDENTE)
                 ->with('user')
                 ->whereHas('user', function ($query) {
                     $query->where('nome', 'LIKE', '%' . $this->nomePessoa . '%');
