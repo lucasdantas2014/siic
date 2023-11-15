@@ -40,11 +40,8 @@ class AuthController extends Controller
             if(Auth::user()->is_admin){
                 return redirect(route('admin_dashboard'));
             }
-            else if (Auth::user()->tipo == User::TIPO_TECNICO) {
-                return redirect()->intended(route('tecnico_dashboard'));
-            }
             else{
-                return redirect(route('professor_dashboard'));
+                return redirect()->intended(route('tecnico_dashboard'));
             }
         }
         return redirect('login')->with('alert','Senha ou SIAPE inválido!');
