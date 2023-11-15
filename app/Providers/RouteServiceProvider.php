@@ -37,13 +37,13 @@ class RouteServiceProvider extends ServiceProvider
                 ->prefix('siic')
                 ->group(base_path('routes/web.php'));
 
-            Route::middleware('web')
-                ->prefix('siic/admin')
-                ->group(base_path('routes/admin.php'));
+            // Route::middleware('admin')
+            //     ->prefix('siic/servidor')
+            //     ->group(base_path('routes/admin.php'));
 
-            Route::middleware('web')
-                ->prefix('siic/user')
-                ->group(base_path('routes/tecnico.php'));
+            // Route::middleware('web')
+            //     ->prefix('siic/user')
+            //     ->group(base_path('routes/tecnico.php'));
 
             Route::middleware('web')
                 ->prefix('siic/professor')

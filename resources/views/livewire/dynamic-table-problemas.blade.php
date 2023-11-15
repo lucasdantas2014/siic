@@ -1,7 +1,7 @@
-v<div>
+<div>
 
     <div id="div-tabela-problemas">
-        <div class="mt-4" style="display: flex;">
+        {{--  <div class="mt-4" style="display: flex;">
             <a type="button" class="btn btn-info col-md-2" href="{{ route('tecnico_problema_registrar_page') }}" style="width: 300px !important; margin-left: auto; margin-rigth: 10px">Registrar Novo Problema</a>
         </div>
 
@@ -14,7 +14,7 @@ v<div>
                     <option value="{{ $categoria }}"> {{ $categoria }} </option>
                 @endforeach
             </select>
-        </div>
+        </div>  --}}
         <table id="tabela-problemas" class="table table-striped mt-4">
             <thead class="thead-dark">
                 <tr class="row">
@@ -37,11 +37,15 @@ v<div>
                         <td class="col-md-1"> {{ $problema->sala->nome }}</td>
                         <td class="col-md-2"> {{ $problema->created_at ? \Carbon\Carbon::parse($problema->created_at)->format('d/m/Y H:i:s') : '-' }}</td>
                         @if( $problema->status == \App\Models\Problema::STATUS_PENDENTE)
-                            <td class="col-md-1"> Pendente</td>
-                            <td class="col-md-2"><a href="{{ route('tecnico_problema_resolver', [$problema->id]) }}" class="btn btn-primary"> Resolver</a></td>
+                            <td class="col-md-1">
+                                <strong style = "color:red">Pendente!</strong>
+                            </td>
+                            <td class="col-md-2"><a href="{{ route('tecnico_problema_resolver', [$problema->id]) }}" class="btn botao-cinza-2"> Resolver</a></td>
                         @else
-                            <td class="col-md-1"> Resolvido</td>
-                            <td class="col-md-2"><button href="" class="btn btn-secondary" disabled> Resolvido</button></td>
+                            <td class="col-md-1">
+                                <strong style = "color:green">Devolvido!</strong>
+                            </td>
+                            <td class="col-md-2"><button href="" class="btn botao-verde"> Resolvido</button></td>
                         @endif
                     </tr>
                 @endforeach
@@ -50,18 +54,46 @@ v<div>
     </div>
 
     <style>
-        #div-tabela-problemas {
-            width: 998px;
-            margin-left: auto;
-            margin-right: auto;
+        .opcoes button {
+            background-color: inherit;
+            border: solid 0 #F6F5F4;
         }
 
-
-        #tabela-problemas {
-            margin-right: auto;
-            margin-left: auto;
+        .btn {
+            width: 70%;
         }
 
+        .botao-verde {
+            background-color: #3EA14E;
+            color: #FFFFFF !important;
+            max-width: 200px;
+            float: right;
+            font-size: 14px !important;
+            margin-right: 20px;
+            border: 1px solid #3EA14E;
+        }
+
+        .botao-verde:hover {
+            background-color: #3EA14E;
+            color: #FFFFFF !important;
+            border: 1px solid #3EA14E;
+        }
+
+        .botao-cinza-2 {
+            background-color: #C3C3C3;
+            color: #FFFFFF !important;
+            max-width: 200px;
+            float: right;
+            font-size: 14px !important;
+            margin-right: 20px;
+            border: 1px solid #C3C3C3;
+        }
+
+        .botao-cinza-2:hover {
+            background-color: #C3C3C3;
+            color: #FFFFFF !important;
+            border: 1px solid #C3C3C3;
+        }
 
     </style>
 </div>

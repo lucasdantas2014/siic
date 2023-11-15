@@ -94,6 +94,10 @@
         color: #3EA14E;
     }
 
+    .navbar {
+        height: 100%;
+    }
+
     #div-logo-navbar {
         width: 100%;
         margin: 10px;

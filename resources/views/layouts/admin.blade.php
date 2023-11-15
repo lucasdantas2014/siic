@@ -16,15 +16,17 @@
     @livewireStyles
 </head>
 <body>
-    <div class="row">
+    <div id="div-main" class="row">
         <div id="div-navbar" class="col-md-2">
             @include('admin.navbar')
         </div>
         <div id="div-conteudo" class="col-md-10">
             @yield('conteudo')
         </div>
+        <div id="div-footer" class="col-md-12">
+            @include('layouts.footer_verde')
+        </div>
 
-        @include('layouts.footer_verde')
     </div>
 
     @livewireScripts
@@ -34,10 +36,15 @@
     body {
         background-color: #F6F5F4;
         height: 100vh;
-        /*overflow: hidden;*/
+        overflow: hidden;
+    }
+
+    #div-main {
+        height: 100%;
     }
 
     #div-navbar {
+        height: 100%;
         padding-right: 0;
     }
 

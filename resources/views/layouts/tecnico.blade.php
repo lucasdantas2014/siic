@@ -1,61 +1,164 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema Chaves - Home</title>
-    <<meta charset="utf-8">
-    <!-- Scripts -->
-    <script src="{{ asset('tecnico/js/app.js') }}" defer></script>
-    <!-- Styles -->
-    <link href="{{ asset('tecnico/css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="/css/styles.css">
+    <title>Menu - Sistema de Chaves</title>
 
-    @vite(['resources/js/app.js'])
+
+    <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
+
+    @vite(['resources/css/admin.css'])
+    @vite(['resources/js/app.js', 'resources/sass/app.scss'])
+
+    @yield('custom-head')
 
     @livewireStyles
-
 </head>
-
 <body>
-<!-- CABEÇALHO -->
-<div class="container border"  id = "header" style = "width:998px;background-image:url(background.png);">
-    <div class="row" style = "width:100%;">
-        <div class = "col-2">
-            <img src="{{asset('tecnico/logo_campus.png')}}" class = "p-3">
+    <div id="div-main" class="row">
+        <div id="div-navbar" class="col-md-2">
+            @include('tecnico.navbar')
         </div>
-        <div class = "col-3 offset-5">
-            <h1 class = "mt-4">Sistema de chaves</h1>
+        <div id="div-conteudo" class="col-md-10">
+            @yield('conteudo')
         </div>
-        <div class = "col-1 offset-1">
-            <a href="{{route('logout')}}" class = "mt-4">Sair</a>
+        <div id="div-footer" class="col-md-12">
+            @include('layouts.footer_verde')
         </div>
+
     </div>
 
-    <div class="row align-items-center justify-content-center" style = "background-color:#dff0d8; width:998px;height:12vh;">
-
-        <div class = "col">
-            <!-- DEVOLUÇÃO -->
-            <a  href="{{ route('tecnico_reservas')}}" style = "background-color:#ffff;font-size:4vh;color:inherit;" class="btn btn-default border"> <img style = "width:5vh;height:5vh"  class = "mr-3" src="{{asset('tecnico/devolucao.png')}}">Reservas</a>
-        </div>
-
-        <div class = "col">
-            <!-- PROBLEMAS -->
-            <a  href="{{ route('tecnico_problemas')}}" style = "background-color:#ffff;font-size:4vh;color:inherit;" class="btn btn-default border"> <img style = "width:5vh;height:5vh"  class = "mr-3" src="{{asset('tecnico/alerta.png')}}">Problemas</a>
-        </div>
-
-        <div class = "col">
-            <!-- RELATÓRIOS -->
-            <a  href="{{ route('tecnico_relatorios') }}" style = "background-color:#ffff;font-size:4vh;color:inherit;" class="btn btn-default border"> <img style = "width:5vh;height:5vh"  class = "mr-3" src="{{asset('tecnico/history.png')}}">Relatórios</a>
-        </div>
-    </div>
-
-</div>
     @livewireScripts
-
-@yield('conteudo')
-
-@yield('rodape')
 </body>
+<style>
+
+    body {
+        background-color: #F6F5F4;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    #div-main {
+        height: 100%;
+    }
+
+    #div-navbar {
+        height: 100%;
+        padding-right: 0;
+    }
+
+    #div-conteudo {
+        padding-right: 0;
+        padding-left: 0;
+    }
+
+    .botao-verde {
+        background-color: #3EA14E;
+        color: #FFFFFF !important;
+        max-width: 200px;
+        float: right;
+        font-size: 14px !important;
+        margin-right: 20px;
+        border: 1px solid #3EA14E;
+
+    }
+
+    .botao-verde:hover {
+        background-color: #FFFFFF !important;
+        color: #3EA14E !important;
+        border: 1px solid #3EA14E;
+    }
+
+    .botao-branco {
+        background-color: #FFFFFF !important;
+        color: #3EA14E !important;
+        max-width: 200px;
+        float: right;
+        font-size: 14px !important;
+        margin-right: 20px;
+    }
+
+    .botao-branco:hover{
+        background-color: #3EA14E;
+        color: #FFFFFF !important;
+    }
+
+    .botao-cinza {
+        max-width: 200px;
+        float: right;
+        font-size: 14px !important;
+        margin-right: 20px;
+        background-color: #F6F5F4;
+        color: #3EA14E;
+        border: solid 1px #3EA14E;
+    }
+
+    .botao-cinza:hover {
+        background-color: #3EA14E;
+        color: #FFFFFF !important;
+    }
+
+     #div-usuarios {
+         color: #3EA14E;
+         font-family: Roboto-Bold, serif;
+     }
+
+    #botao-adicionar-usuario {
+        max-width: 200px;
+        float: right;
+        font-size: 14px !important;
+        margin-right: 20px;
+    }
+
+    .opcoes {
+        display: inline;
+        list-style: none;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 13px;
+    }
+
+    .opcoes_vermelho {
+        color: #A30D11 !important;
+    }
+
+    .opcoes a {
+        text-decoration: none;
+        color: #000;
+    }
+
+    #tabela-usuarios {
+        background-color: #FFFFFF;
+    }
+
+    .opcoes button {
+        background-color: inherit;
+        border: solid 0 #F6F5F4;
+    }
+
+    .pagination > li > a,
+    .pagination > li > span {
+        color: #3EA14E; // use your own color here
+    }
+
+    .pagination > .active > a,
+    .pagination > .active > a:focus,
+    .pagination > .active > a:hover,
+    .pagination > .active > span,
+    .pagination > .active > span:focus,
+    .pagination > .active > span:hover {
+        background-color: #3EA14E;
+        border-color: #3EA14E;
+    }
+
+    .page-item button{
+        color: #3EA14E !important;
+    }
+
+    nav {
+        height: fit-content;
+    }
+
+</style>
 </html>

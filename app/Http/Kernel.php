@@ -3,6 +3,7 @@
 namespace App\Http;
 
 use App\Http\Middleware\AdminCheck;
+use App\Http\Middleware\AuthCheck;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -47,7 +48,11 @@ class Kernel extends HttpKernel
 
         'admin' => [
             'admin' => AdminCheck::class
-        ]
+        ],
+
+        'user' => [
+            'user' => AuthCheck::class
+        ],
     ];
 
     /**

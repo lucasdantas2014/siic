@@ -1,5 +1,4 @@
-<div id="footer" class="row">
-
+<div id="footer">
     <label id="instituicao">Instituto Federal da Paraíba - Campus Campina Grande Direitos autorais © 2023. Todos os direitos reservados</label>
 
 </div>
@@ -13,6 +12,7 @@
         text-align: center;
         font-family: Roboto-Black, serif;
         padding: 5px;
+        justify-content: center;
 
         position: absolute;
         bottom: 0;

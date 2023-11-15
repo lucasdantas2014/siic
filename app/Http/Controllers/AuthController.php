@@ -34,12 +34,8 @@ class AuthController extends Controller
 
         $credentials = $request->only('siape', 'password');
         if (Auth::attempt($credentials)) {
-            Auth::guard()->attempt($credentials);
+            $user = Auth::user();
             $request->session()->regenerate();
-
-            if(Auth::user()->first_login == 1){
-                return redirect('/firstlogin');
-            }
 
             if(Auth::user()->is_admin){
                 return redirect(route('admin_dashboard'));
@@ -50,9 +46,7 @@ class AuthController extends Controller
             else{
                 return redirect(route('professor_dashboard'));
             }
-
         }
-
         return redirect('login')->with('alert','Senha ou SIAPE inválido!');
     }
 
@@ -112,12 +106,12 @@ class AuthController extends Controller
            if(Auth::user()->is_admin){
                 return view('admin.dashboard',['user' =>Auth::user()]);
            }
-           elseif (Auth::user()->tipo == User::TIPO_TECNICO) {
+           else {
                return view('tecnico.dashboard', ['user' => Auth::user()]);
            }
-           else{
-                 return view('professor.dashboard',['user' =>Auth::user()]);
-           }
+        //    else{
+        //          return view('professor.dashboard',['user' =>Auth::user()]);
+        //    }
         }
 
         return redirect("login")->withSuccess('You are not allowed to access');
@@ -129,9 +123,8 @@ class AuthController extends Controller
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
-        dd('teste');
 
-        return redirect('/');
+        return redirect(route('painel'));
     }
 
     public function firstloginIndex(){

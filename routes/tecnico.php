@@ -20,27 +20,3 @@ use App\Http\Controllers\ProblemaController;
 
 // ############################### AUTENTICAÇAO ######################################
 
-
-Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('tecnico_dashboard');
-
-Route::get('/reservas', [PedidoController::class, 'reservasDoUsuario'])
-    ->name('tecnico_reservas');
-
-Route::get('/problemas', [ProblemaController::class, 'show'])
-    ->name('tecnico_problemas');
-
-Route::get('/problemas/resolver/{problema}', [ProblemaController::class, 'resolverProblema'])
-    ->name('tecnico_problema_resolver');
-
-Route::get('/problemas/registrar', [ProblemaController::class, 'registrarProblemaPage'])
-    ->name('tecnico_problema_registrar_page');
-
-Route::post('/problemas/registrar', [ProblemaController::class, 'registrarProblema'])
-    ->name('tecnico_problema_registrar');
-
-
-Route::get('/relatorios', [PedidoController::class, 'relatorio'])
-    ->name('tecnico_relatorios');
-
-Route::post('/relatorio/reservas', [PedidoController::class, 'gerarRelatorioPedidos'])
-    ->name('tecnico_relatorio_reserva');

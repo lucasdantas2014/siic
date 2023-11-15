@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class AdminCheck
+class AuthCheck
 {
     /**
      * Handle an incoming request.
@@ -18,9 +18,7 @@ class AdminCheck
     public function handle(Request $request, Closure $next)
     {
         if (Auth::user()) {
-            if (Auth::user()->is_admin) {
-                return $next($request);
-            }
+            return $next($request);
         }
         return redirect(route('login_page'));
     }
