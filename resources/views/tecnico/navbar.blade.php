@@ -1,5 +1,11 @@
 
 <nav class="navbar">
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#colp" aria-controls="colp" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="colp">
         <div id="div-logo-navbar">
             <img src={{ \Illuminate\Support\Facades\Vite::asset('resources/images/logo_ifpb.png') }} alt="" alt="">
         </div>
@@ -46,6 +52,7 @@
                 </li>
             </ul>
         </div>
+    </div>
 </nav>
 
 <style>
