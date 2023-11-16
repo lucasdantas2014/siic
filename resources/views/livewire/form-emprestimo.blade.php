@@ -56,7 +56,7 @@
                                     <select name="chave" id = "sala" class = "form-control-lg">
                                         @if (count($chaves) == 0)
                                             <option value="">
-                                                Nenhuma chave está reservada
+                                                Nenhuma chave está disponível
                                             </option>
                                         @endif
                                         @foreach($chaves as $chave)

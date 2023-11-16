@@ -31,8 +31,14 @@ class DynamicTablePublico extends Component
             $this->pedidos = Pedido::whereRelation('chave.sala', 'categoria', $this->categoria)
                 ->where('status', Pedido::STATUS_PENDENTE)
                 ->with('user')
-//                ->where('user.nome', 'LIKE', '%' . $this->nomePessoa . '%')
-//                ->where('chave.sala.nome', 'LIKE', '%' . $this->nomeSala . '%')
+                ->whereHas('user', function ($query) {
+                    $query->where('nome', 'LIKE', '%' . $this->nomePessoa . '%');
+                })
+                ->whereHas('chave', function ($query) {
+                    $query->whereHas('sala', function ($query) {
+                       $query->where('nome', 'LIKE', '%' . $this->nomeSala . '%');
+                    });
+                })
                 ->paginate($this->itensPorPagina);
             $this->mensagem = '';
 

@@ -8,7 +8,9 @@
 {{--        <div class="collapse navbar-collapse" id="colp">--}}
 
         <div id="div-logo-navbar">
+            <a href="{{ route('admin_dashboard') }}">
             <img src={{ \Illuminate\Support\Facades\Vite::asset('resources/images/logo_ifpb.png') }} alt="" alt="">
+            </a>
         </div>
 
         <div id="menu" class="mt-4">

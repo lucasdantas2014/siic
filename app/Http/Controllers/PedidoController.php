@@ -69,7 +69,6 @@ class PedidoController extends Controller
             ->id;
 
         $pedido = Pedido::where('chave_id',$request->chave)
-            ->where('user_id', $userId)
             ->where('status', Pedido::STATUS_PENDENTE)->first();
 
         $pedido->status = false;
