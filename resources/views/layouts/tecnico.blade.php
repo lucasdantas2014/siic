@@ -160,5 +160,31 @@
         height: fit-content;
     }
 
+    @media(max-width: 425px){
+        body {
+            background-color: #F6F5F4;
+            height: 100vh;
+            overflow: scroll;
+            font-size: 13px;
+        }
+
+        .container {
+            height: fit-content;
+        }
+
+        #div-navbar {
+            height: fit-content;
+            width: 100%;
+        }
+
+        #div-login-link {
+            display: revert;
+        }
+
+        #div-footer {
+            padding: 0;
+        }
+    }
+
 </style>
 </html>
