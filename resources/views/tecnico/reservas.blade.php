@@ -33,9 +33,9 @@
                         <td class="col">
 
                             @if( $reserva->status == \App\Models\Pedido::STATUS_PENDENTE)
-                                <strong style = "color:green">Disponível!</strong>
+                                <strong style = "color:red">Pendente!</strong>
                             @else
-                                <strong style = "color:red">Indisponível!</strong>
+                                <strong style = "color:green">Devolvido</strong>
                             @endif
                         </td>
                         <td class="col"> {{ $reserva->devolvido_em ? \Carbon\Carbon::parse($reserva->devolvido_em)->format('d/m/Y H:i:s') : '-' }}</td>

@@ -14,8 +14,9 @@ class ProblemaController extends Controller
     public function show() {
 //        $problemas = Problema::where('status', Problema::STATUS_PENDENTE)->get();
         $problemas = Problema::all();
+        $salas = Sala::all();
 
-        return view('tecnico.problemas', ['problemas' => $problemas]);
+        return view('tecnico.problemas', ['problemas' => $problemas, 'salas' => $salas]);
     }
 
     public function resolverProblema(string $problema) {
@@ -40,7 +41,7 @@ class ProblemaController extends Controller
 
         $titulo = $request->input('titulo');
         $sala = $request->input('sala');
-        $descricao = $request->input('descricao');
+        $descricao = $request->input('descricao') ?? '';
 
         Problema::create([
             'titulo' => $titulo,
