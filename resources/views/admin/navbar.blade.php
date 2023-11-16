@@ -1,5 +1,5 @@
 
-<nav class="navbar">
+<nav class="navbar navbar navbar-expand-lg">
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#colp" aria-controls="colp" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -7,15 +7,14 @@
 
     <div class="collapse navbar-collapse" id="colp">
 
-        <div id="div-logo-navbar">
-            <a href="{{ route('admin_dashboard') }}">
-            <img src={{ \Illuminate\Support\Facades\Vite::asset('resources/images/logo_ifpb.png') }} alt="" alt="">
-            </a>
-        </div>
-
         <div id="menu" class="mt-4">
 
             <ul class="nav navbar-nav">
+                <li id="div-logo-navbar">
+                    <a href="{{ route('admin_dashboard') }}">
+                        <img src={{ \Illuminate\Support\Facades\Vite::asset('resources/images/logo_ifpb.png') }} alt="" alt="">
+                    </a>
+                </li>
                 <li class="nav-item {{ \Illuminate\Support\Facades\Route::is('admin_usuarios') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('admin_usuarios') }}">
                         <img src={{
@@ -103,7 +102,6 @@
 
     #div-logo-navbar {
         width: 100%;
-        margin: 10px;
     }
 
     #div-logo-navbar img {
@@ -113,6 +111,11 @@
 
     #menu {
         width: 100%;
+    }
+
+    #menu ul {
+        display: flex;
+        flex-direction: column;
     }
 
     a {
