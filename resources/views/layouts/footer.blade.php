@@ -19,4 +19,11 @@
         width: 100%;
     }
 
+    @media(max-width: 425px){
+        #footer {
+            position: relative;
+            height: fit-content;
+            margin: 0;
+        }
+    }
 </style>

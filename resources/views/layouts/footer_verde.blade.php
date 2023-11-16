@@ -20,4 +20,11 @@
         height: 2.5rem;            /* altura do rodapé */
     }
 
+    @media(max-width: 425px) {
+        #footer {
+            position: relative;
+            height: fit-content;
+        }
+    }
+
 </style>

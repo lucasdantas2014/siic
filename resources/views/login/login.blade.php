@@ -79,5 +79,32 @@
             color: #FFFFFF;
             width: 100%;
         }
+
+        @media(max-width: 425px){
+            body {
+                background-color: #F6F5F4;
+                height: 100vh;
+                overflow: scroll;
+                font-size: 13px;
+            }
+
+            .container {
+                height: fit-content;
+            }
+
+            #div-login-link {
+                display: revert;
+            }
+
+            #div-footer {
+                padding: 0;
+            }
+
+            #div-footer {
+                position: absolute;
+                height: fit-content;
+                bottom: 0px;
+            }
+        }
     </style>
 @endsection

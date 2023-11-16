@@ -44,7 +44,7 @@ class AuthController extends Controller
                 return redirect()->intended(route('tecnico_dashboard'));
             }
         }
-        return redirect('login')->with('alert','Senha ou SIAPE inválido!');
+        return redirect(route('login_page'))->with('alert','Senha ou SIAPE inválido!');
     }
 
     // Retornar página de registro

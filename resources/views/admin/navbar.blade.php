@@ -1,11 +1,11 @@
 
 <nav class="navbar">
 
-{{--        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#colp" aria-controls="colp" aria-expanded="false" aria-label="Toggle navigation">--}}
-{{--            <span class="navbar-toggler-icon"></span>--}}
-{{--        </button>--}}
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#colp" aria-controls="colp" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-{{--        <div class="collapse navbar-collapse" id="colp">--}}
+    <div class="collapse navbar-collapse" id="colp">
 
         <div id="div-logo-navbar">
             <a href="{{ route('admin_dashboard') }}">
@@ -85,6 +85,7 @@
                 </li>
             </ul>
         </div>
+    </div>
 </nav>
 
 <style>

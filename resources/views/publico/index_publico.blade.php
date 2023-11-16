@@ -16,18 +16,16 @@
 <body>
 
     <div id="div-main" class="row">
-        <div class="container offset-2 col-md-8">
-            <div id="div-header">
-                <div class="row">
-                    <div class="col">
-                        <img src="logo_campus.png" class = "p-3">
-                    </div>
-                    <div id="div-titulo" class= "col">
-                        <h1 class = "mt-4">SIIC - Sistema Interno Integrado de Chaves</h1>
-                    </div>
-                    <div id="div-login-link" class="col-2">
-                        <a  id="a-login" href="{{route('login_page')}}"> Login</a>
-                    </div>
+        <div class="container offset-md-2 col-md-8">
+            <div id="div-header" class="row">
+                <div class="col-md-5">
+                    <img src="logo_campus.png" class = "p-3">
+                </div>
+                <div id="div-titulo" class= "col-md-5">
+                    <h1 class = "mt-4">SIIC - Sistema Interno Integrado de Chaves</h1>
+                </div>
+                <div id="div-login-link" class="col-md-2">
+                    <a  id="a-login" href="{{route('login_page')}}"> Login</a>
                 </div>
             </div>
             <div id="div-conteudo" class="row">
@@ -53,14 +51,13 @@
 
         #div-main {
             height: 100%;
-        }
-
-        #header {
-            background-image: url(background.png);
+            width: 100%;
+            margin: 0;
         }
 
         #div-header {
             background-image:url(background.png);
+            margin: 0;
         }
 
         .container {
@@ -89,28 +86,53 @@
             font-size: 20px
         }
 
+        #div-conteudo {
+            width: 100%;
+        }
+
         .pagination > li > a,
-    .pagination > li > span {
-        color: #3EA14E; // use your own color here
-    }
+        .pagination > li > span {
+            color: #3EA14E; // use your own color here
+        }
 
-    .pagination > .active > a,
-    .pagination > .active > a:focus,
-    .pagination > .active > a:hover,
-    .pagination > .active > span,
-    .pagination > .active > span:focus,
-    .pagination > .active > span:hover {
-        background-color: #3EA14E;
-        border-color: #3EA14E;
-    }
+        .pagination > .active > a,
+        .pagination > .active > a:focus,
+        .pagination > .active > a:hover,
+        .pagination > .active > span,
+        .pagination > .active > span:focus,
+        .pagination > .active > span:hover {
+            background-color: #3EA14E;
+            border-color: #3EA14E;
+        }
 
-    .page-item button{
-        color: #3EA14E !important;
-    }
+        .page-item button{
+            color: #3EA14E !important;
+        }
 
-    nav {
-        height: fit-content;
-    }
+        nav {
+            height: fit-content;
+        }
+
+        @media(max-width: 425px){
+            body {
+                background-color: #F6F5F4;
+                height: 100vh;
+                overflow: scroll;
+                font-size: 13px;
+            }
+
+            .container {
+                height: fit-content;
+            }
+
+            #div-login-link {
+                display: revert;
+            }
+
+            #div-footer {
+                padding: 0;
+            }
+        }
 
     </style>
 </body>
