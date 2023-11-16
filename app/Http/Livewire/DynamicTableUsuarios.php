@@ -25,7 +25,7 @@ class DynamicTableUsuarios extends Component
         if (!empty(!$this->nome)) {
             $this->usuarios = User::paginate($this->itensPorPagina);
         } else {
-            $this->usuarios = User::where('name','LIKE', '%' . $this->nome . '%')
+            $this->usuarios = User::where('nome','LIKE', '%' . $this->nome . '%')
                 ->paginate($this->itensPorPagina);
         }
 

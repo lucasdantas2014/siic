@@ -23,7 +23,7 @@ class SalaController extends Controller
     public function store(Request $request) {
         $nome = $request->input('nome');
         $categoria = $request->input('categoria');
-        $descricao = $request->input('descricao');
+        $descricao = $request->input('descricao') ?? '';
 
         Sala::firstOrCreate([
             'nome' => $nome,

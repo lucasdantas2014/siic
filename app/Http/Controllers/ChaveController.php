@@ -23,7 +23,7 @@ class ChaveController extends Controller
 
         Chave::create([
             'nome' => $request->nome,
-            'descricao' => $request->descricao,
+            'descricao' => $request->descricao ?? '',
             'disponivel' => true,
             'sala_id' => $request->sala
         ]);

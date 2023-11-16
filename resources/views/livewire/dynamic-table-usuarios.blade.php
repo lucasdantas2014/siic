@@ -1,6 +1,11 @@
 <div>
 
-{{--        <input type="text" name="nome-usuario" placeholder="Filtrar por nome de usuário."/>--}}
+    <div id="div-filtros" class="row mt-4 ml-4">
+        <div class="col-md-4">
+            <label for="nome-sala">Filtrar pelo nome: </label>
+            <input id="nome-sala" class="form-control" type="text" name="nome-sala" wire:model="nome" placeholder="Digite o nome do usuário">
+         </div>
+    </div>
      <table id="tabela-usuarios" class="table table-striped mt-4">
             <thead>
             <tr>
@@ -35,7 +40,7 @@
                                 <li class="opcoes opcoes_vermelho">
                                     <button class="opcoes opcoes_vermelho" >
                                         <a href="{{ route('admin_usuarios_remover', $user->siape) }}"
-                                            class="opcoes opcoes_vermelho" 
+                                            class="opcoes opcoes_vermelho"
                                             onclick="return confirm('Você tem certeza que deseja remover o usuário de siape: {{ $user->siape }}?')">
                                             <i class="fa-solid fa-trash-can"></i>
                                         </a>
@@ -57,7 +62,9 @@
 </div>
 
 <style>
-
+    #div-filtros {
+        padding-left: 10px
+    }
 </style>
 
 <script>

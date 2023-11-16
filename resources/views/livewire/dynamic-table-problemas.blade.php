@@ -51,6 +51,11 @@
                 @endforeach
             </tbody>
         </table>
+
+        <div>
+            {{ $problemas->links() }}
+        </div>
+
     </div>
 
     <style>
